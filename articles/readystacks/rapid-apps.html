@@ -33,6 +33,12 @@
           <h1>Rapid Application Deployment with Git</h1>
           <p>The Rapid Application Engine allows you to deploy any Rails or Rack application easy. You just have to install Webbynode&#8217;s gem and run a couple of commands.</p>
           <p>Then you&#8217;ll just to push your app to your Webby and the dirty work will be done behinds the scene.</p>
+          <h2>Requirements</h2>
+          <ul>
+          	<li>Webbynode account <em>(don&#8217;t tell me!)</em></li>
+          	<li>Unix-based system: Linux, Mac OS X, &#8230;, but <strong>not windows</strong> (yet)</li>
+          	<li>git</li>
+          </ul>
           <h2>Preparation</h2>
           <p>In order to use the Rapid App Deployment, you have to redeploy your Webby with this stack. But that just have to be done once. After that, you&#8217;ll be able to add new apps on the fly, without loosing what&#8217;s already configured on your Webby.</p>
           <p>Here&#8217;s a step-by-step guide of the options you need to choose:</p>
@@ -65,13 +71,15 @@
           <div class="CodeRay">
           <code>$ webbynode push<br/>Publishing myapp to Webbynode...<br/>mkdir: created directory `myapp'<br/>Counting objects: 86, done.<br/>...<br/></code>
           </div>
+          <p>And that&#8217;s it. The same process will happen again.</p>
+          <p>This very same process can be done for Rack applications, as long as you have the necessary gems installed during the preparation of your Webby.</p>
         </div>
       </div>
     </div>
     <div id='force'></div>
     <div id='footer'>
       <div class='inner'>
-        Webbynode Rox
+        Copyright &copy; 2010-2020 Webbynode
       </div>
     </div>
   </body>

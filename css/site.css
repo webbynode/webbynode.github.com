@@ -120,14 +120,17 @@ p.title {
   overflow: hidden;
   align: center;
   background-color: #5E8FBB;
-  padding-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   min-width: 950px;
   height: 80px;
   margin: 0;
   border-top: 4px solid #6CA1CB; }
   #footer .inner {
+    color: white;
     width: 870px;
-    margin: 0 auto; }
+    margin: 0 auto;
+    text-align: center; }
 
 #header p.title {
   font-size: 2.4em;
