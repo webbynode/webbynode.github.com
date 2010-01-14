@@ -88,7 +88,7 @@ p.title {
 
 #main {
   height: auto !important;
-  margin: 0 auto -6.2em;
+  margin: 0 auto -104px;
   min-height: 100%; }
 
 #header {
@@ -107,8 +107,11 @@ p.title {
   width: 870px;
   margin: 0 auto; }
   #content .inner {
-    padding-top: 20px;
     margin: 0 auto; }
+
+#force {
+  height: 100px;
+  padding-bottom: 4em; }
 
 #footer {
   -moz-background-clip: border;
@@ -137,10 +140,10 @@ p.title {
   padding-right: 10px; }
 
 #content {
-  margin-top: 30px; }
+  margin-top: 20px; }
 
 #sidebar {
-  margin-top: 30px;
+  margin-top: 0;
   font-size: 0.8em; }
   #sidebar h4 {
     margin-bottom: 0.75em; }
