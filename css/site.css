@@ -82,9 +82,9 @@ p.title {
 
 .CodeRay .no {
   display: none; }
-.CodeRay code {
-  font-size: 0.8em;
-  line-height: 1; }
+.CodeRay pre {
+  font-size: 0.9em;
+  line-height: 1.4em; }
 
 #main {
   height: auto !important;

@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang='en-us' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <meta content='text/html; charset=utf-8' http-equiv='content-type' />
+    <title>
+      Setting up DNS for your domain
+    </title>
+    <meta content='&lt;%= @page.author %&gt;' name='author' />
+    <link href='/css/blueprint/screen.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <!--[if IE]>
+      <link href='/css/blueprint/print.css' media='print' rel='stylesheet' type='text/css' />
+    <![endif]-->
+    <link href='/css/blueprint/ie.css' media='screen, projection' type='text/css' />
+    <link href='/css/coderay.css' rel='stylesheet' type='text/css' />
+    <link href='/css/site.css' media='screen, projection' rel='stylesheet' type='text/css' />
+  </head>
+  <body>
+    <div id='main'>
+      <div id='header'>
+        <div class='inner'>
+          <p class='right'>
+            Search:
+            <br />
+            <input name='search' />
+          </p>
+          <p class='title'>
+            Webbynode Guides
+          </p>
+        </div>
+      </div>
+      <div class='article' id='content'>
+        <div class='inner'>
+          <h1>Setting up DNS for your domain</h1>&#x000A;<p>A simple illustrated walkthrough of what&#8217;s necessary to make your domain point to your Webby.</p>&#x000A;<h2>Requirements</h2>&#x000A;<ul>&#x000A;	<li>Setup of Name Servers on your registrars to <code>NS1.DNSWEBBY.COM</code> and <code>NS2.DNSWEBBY.COM</code></li>&#x000A;</ul>&#x000A;<h2>Preparation</h2>&#x000A;<p>In order to execute this tutorial is necessary that you visit your registrar&#8217;s page (GoDaddy, eNom, Network Solutions, etc.) and set your domain&#8217;s Name Server 1 (NS1) and Name Server 2 (NS) to point to <code>NS1.DNSWEBBY.COM</code> and <code>NS2.DNSWEBBY.COM</code>, respectively.</p>&#x000A;<p>Here&#8217;s one example of that setting in GoDaddy&#8217;s DNS Manager:</p>&#x000A;<p><img src="images/godaddy-ns.png"></p>&#x000A;<h2>Configuration</h2>&#x000A;<p>After setting up the Name Servers, it&#8217;s time to log into Webbymanager and access the DNS tab (1) and click the <em>New zone</em> button (2):</p>&#x000A;<p><img src="images/manager-step1.png"></p>&#x000A;<h3>A little background</h3>&#x000A;<p><em>DISCLAIMER: This is a high level abstraction of how DNS works. Actual DNS specification is much more complex than what&#8217;s outlined here</em></p>&#x000A;<p>Domain Naming Servers are servers that receives inquiries from the internet about where are &#8220;areas&#8221; of your domain located. Each domain is a <em>zone</em>. For instance, when you visit http://www.webbynode.com, the &#8220;zone&#8221; part of the domain (or the Top Level Domain &#8211; TLD) is <code>webbynode.com</code>.</p>&#x000A;<p>Each DNS Zone has any number of <em>records</em>. The simplest way to handle domains and subdomains is to create records of the types A (primary) and CNAME (redirection) records.</p>&#x000A;<h3>Goals of the DNS configuration</h3>&#x000A;<p>Before getting started, let&#8217;s see what DNS entries we need.</p>&#x000A;<p>For this tutorial, pretend we have registered the <code>dnskings.com</code> domain. We want <a href="http://www.dnskings.com">http://www.dnskings.com</a> to point to our Webby, along with <a href="http://dnskings.com">http://dnskings.com</a>.</p>&#x000A;<p>Before starting the proper configuration, we need to obtain the IP Address of our Webby. That can be obtained on the <em>Webbies</em> tab on Webbymanager:</p>&#x000A;<p><img src="images/mywebbies-ip.jpg"></p>&#x000A;<p>So, now that we know our Webby&#8217;s IP is <code>208.88.125.207</code>, let&#8217;s create our <em>zone</em>.</p>&#x000A;<h3>Zone configuration</h3>&#x000A;<p><img src="images/manager-step2.png"><br />&#x000A;Enter <strong>dnskings.com</strong> on the <em>Domain</em> field and click the <em>Save zone</em> button. Do not worry about the other settings here, they are advanced settings and are out of the scope of this tutorial. If all went fine, you should see something like the page below:</p>&#x000A;<p><img src="images/manager-step3.png"></p>&#x000A;<p>Now click on the <em>Records</em> link.</p>&#x000A;<h3>Records configuration</h3>&#x000A;<p>When you click Records, you should see an empty records list like the one below. Click the <em>New record</em> button to add our first record:</p>&#x000A;<p><img src="images/manager-step4.png"></p>&#x000A;<p>On the new page, you should make sure <strong>A</strong> is selected on the <em>Type</em> field (1), enter <strong>www</strong> on the <em>Name</em> field (2), your Webby&#8217;s IP (in our case <code>208.88.125.207</code>) (3) and then click <em>Save record</em> (4). This should be enough for <a href="http://www.dnskings.com">http://www.dnskings.com</a> to work.</p>&#x000A;<p><img src="images/manager-step5.png"></p>&#x000A;<p>Again, don&#8217;t mind the other options for now. If you did everything right, you should see something like the picture below. Once you confirm everything&#8217;s fine, let&#8217;s add another record by clicking the <em>New record</em> button again.</p>&#x000A;<p><img src="images/manager-step6.png"></p>&#x000A;<p>Add a new record, just like the one before, but this time leave the Name empty. This will make <a href="http://dnskings.com">http://dnskings.com</a> work too. Here are the settings again:</p>&#x000A;<p><img src="images/manager-step7.png"></p>&#x000A;<p>And how things should look when properly setup:</p>&#x000A;<p><img src="images/manager-step8.png"></p>&#x000A;<p>At this point, once registrar&#8217;s settings are propagated, your should be able to visit both your addresses and get them to point to your Webby.</p>&#x000A;<p>Happy coding!</p>&#x000A;
+        </div>
+      </div>
+    </div>
+    <div id='force'></div>
+    <div id='footer'>
+      <div class='inner'>
+        Copyright &copy; 2010-2020 Webbynode
+      </div>
+    </div>
+  </body>
+</html>
