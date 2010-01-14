@@ -16,7 +16,7 @@
   </head>
   <body>
     <div class='container'>
-      <div class='column span-20 prepend-2 append-2 first last' id='header'>
+      <div class='column span-22 prepend-1 append-1 first last' id='header'>
         <p class='right'>
           Search:
           <br />
@@ -27,65 +27,47 @@
         </p>
       </div>
       <div class='spacer column span-24 first last'></div>
-      <div id='content' class='column span-15 prepend-2 first'>
-      <p class="title">Guides Beta</p>
-      <p>Follow our step by step guides on a wide range of different subject. From basic tasks like Redeploying your Webby to complex subject like Linux administration, security, etc.</p>
+      <div id='content' class='column span-15 prepend-1 first'>
+      <h1>Guides Beta</h1>
+      <p>Follow our step by step guides on a wide range of different subjects. From basic tasks like Redeploying your Webby to complex subject like Linux administration, security, etc.</p>
       <h2>Featured Article</h2>
       <h3><a href="articles/readystacks/rapid-apps.html">Rapid App Deployment</a></h3>
-      <p>We have been busy putting together a way to deploy more than one Rails application to your Webby with the easiness you get from ReadyStacks.</p>
-      <p>Not only that, but we have been working on ways to deploy Rack apps, so you could deploy Sinatra, Ramaze, Camping, &#8230; apps easily along with Rails applications.</p>
-      <p>Finally Remi created two Ruby Gems that made it click for us. We made some changes and here it is: deploy multiple Rails and Rack apps to your Webby while keeping the Git workflow you’re used to. And you don’t have to worry about DNS setup at the beginning. If your app is called xyz, you’ll get the domain http://xyz.webbyapp.com for free, while you setup the final domain.</p>
+      <p>Learn how to prepare your Webby so you can deploy your Rails or Rack application from the comfort of your command line and with nothing more than a few commands, tightly integrated to your everyday git workflow:</p>
       <div class="CodeRay">
-      <pre><span class="no">1</span> <span class="c"># Initializer for the class.</span>
-      <span class="no">2</span> <span class="r">def</span> <span class="fu">initialize</span>( string )
-      <span class="no">3</span>   <span class="iv">@str</span> = string
-      <span class="no">4</span> <span class="r">end</span>
-      </pre>
+      <code><span class="no">1</span> $ sudo gem install webbynode<br/><span class="no">2</span> $ cd /path/to/app<br/><span class="no">3</span> $ webbynode init [webby_ip]<br/><span class="no">4</span> $ webbynode push<br/></code>
       </div>
-      <p>Some reactions from our customers:</p>
-      <blockquote>
-      <p>&#8220;Thank you Webbynode for making deployment of rails and rack apps soooo nice. Can&#8217;t wait till it&#8217;s live.&#8221; (<b>@fiercerobot</b> via Twitter)</p>
-      </blockquote>
-      <blockquote>
-      <p>&#8220;great work from the @webbynode guys! Rapid App Deployment now available! <strong>hurray</strong> ;)&#8221; (<b>@SamuelTonini</b> via Twitter)</p>
-      </blockquote>
-      <blockquote>
-      <p>&#8220;Very awesome! I cannot wait to try this out. I really love this kind of deployment. This is the kind of stuff that makes me love and use Webbynode over anything else, just like ReadyStacks!&#8221; (Michael van Rooijen, comment on our blog)</p>
-      </blockquote>
-      <p>Vivamus euismod. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse vel nibh ut turpis dictum sagittis. Aliquam vel velit a elit auctor sollicitudin. Nam vel dui vel neque lacinia pretium. Quisque nunc erat, venenatis id, volutpat ut, scelerisque sed, diam. Mauris ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec mattis. Morbi dignissim sollicitudin libero. Nulla lorem.</p></div>
-      <div class='column span-5 append-2 last' id='sidebar'>
+      <p><a href="articles/readystacks/rapid-apps.html">Read more&#8230;</a></p></div>
+      <div class='column span-6 prepend-1 append-1 last' id='sidebar'>
         <h4>
           Categories
         </h4>
-        <p>
-          <ul>
-            <li>Quick Start</li>
-            <li>ReadyStacks</li>
-          </ul>
-        </p>
+        <ul>
+          <li><a href="/articles/quickstart/index.html">Quick Start</a></li>
+          <li><a href="/articles/readystacks/index.html">ReadyStacks</a></li>
+        </ul>
         <div class='box'>
+          <p class='title'>
+            <b>Win a month free!</b>
+          </p>
           <p class='last'>
-            Mauris a lectus. Aliquam erat volutpat. Phasellus ultrices mi a sapien. Nunc rutrum egestas lorem. Duis ac sem sagittis elit tincidunt gravida.
+            We are looking for people like you to give us a hand on writing
+            good articles about anything that improves how other users
+            experience Webbynode.
+          </p>
+          <p class='last'>
+            You can write about anything, from a tutorial on how to setup
+            a DNS for a Website to how to tighten the security of your Webby.
+          </p>
+          <p class='last'>
+            We'll be giving out great prizes!
+          </p>
+          <p class='last'>
+            <a href="/contribute/index.html">Read more...</a>
           </p>
         </div>
-        <p class='quiet'>
-          Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras ornare mattis nunc. Mauris venenatis, pede sed aliquet vehicula, lectus tellus pulvinar neque, non cursus sem nisi vel augue.
-        </p>
-        <h5>
-          Incremental leading
-        </h5>
-        <p class='incr'>
-          Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras ornare mattis nunc. Mauris venenatis, pede sed aliquet vehicula, lectus tellus pulvinar neque, non cursus sem nisi vel augue. sed aliquet vehicula, lectus tellus.
-        </p>
       </div>
-      <div class='column span-20 prepend-2 append-2 first last' id='footer'>
+      <div class='column span-22 prepend-1 append-1 first last' id='footer'>
         <hr />
-        <p>
-          This website was created with
-          <a href='http://webby.rubyforge.org'>
-            Webby
-          </a>
-        </p>
       </div>
     </div>
   </body>

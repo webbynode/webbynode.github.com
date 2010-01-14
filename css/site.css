@@ -1,19 +1,33 @@
 body {
-  font-family: helvetica,arial,freesans,clean,sans-serif;
+  font-family: Georgia,"Times New Roman",Times,serif;
   line-height: 1.5em;
-  font-size: 13.34px; }
+  font-size: 24px; }
 
-h1, h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6 {
   color: #111; }
 
-h2 {
+h1 {
+  border-bottom: 1px solid #333333;
+  display: block;
   font-size: 1.6em;
+  width: 100%;
   font-weight: bold; }
+
+h2 {
+  font-size: 1.4em;
+  font-weight: bold;
+  border-bottom: 1px solid #333333; }
+
+h3 {
+  font-size: 1.2em;
+  font-weight: bold; }
+  h3 a {
+    text-decoration: none; }
 
 a {
   color: #125AA7; }
   a:hover {
-    color: #000; }
+    color: #125AA7; }
 
 blockquote {
   color: #666; }
@@ -42,10 +56,26 @@ p.quiet {
 
 p.title {
   color: #111;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 2em;
   margin-bottom: 0.75em;
   font-weight: bold; }
+
+.box {
+  padding: 0.8em; }
+  .box p.title {
+    font-size: 1em;
+    font-height: bold;
+    padding-bottom: 10px; }
+  .box p.last {
+    font-size: 0.8em;
+    font-height: normal;
+    line-height: 1.5em; }
+
+.CodeRay .no {
+  display: none; }
+.CodeRay code {
+  font-size: 0.8em;
+  line-height: 1; }
 
 #header {
   background-color: #6CA1CB;
@@ -56,7 +86,7 @@ p.title {
   padding-top: 4px; }
 
 #header p.title {
-  font-size: 3em;
+  font-size: 2.4em;
   line-height: 1;
   margin-bottom: 0.5em; }
 
@@ -69,4 +99,7 @@ p.title {
   margin-top: 30px; }
 
 #sidebar {
-  margin-top: 30px; }
+  margin-top: 30px;
+  font-size: 0.8em; }
+  #sidebar h4 {
+    margin-bottom: 0.75em; }
