@@ -142,6 +142,11 @@ p.title {
   color: #000;
   padding-right: 10px; }
 
+.right {
+  float: right;
+  color: #000;
+  padding-right: 10px; }
+
 #content {
   margin-top: 20px; }
 
