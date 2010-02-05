@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang='en-us' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <meta content='text/html; charset=utf-8' http-equiv='content-type' />
+    <meta content='Z_wF3a4y6_g8W7oFyGyuXoS8q4dTgshb0bDplfKsevc' name='google-site-verification' />
+    <title>
+      Rapid Application Deployment Engine
+    </title>
+    <meta content='&lt;%= @page.author %&gt;' name='author' />
+    <link href='/css/blueprint/screen.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <!--[if IE]>
+      <link href='/css/blueprint/print.css' media='print' rel='stylesheet' type='text/css' />
+    <![endif]-->
+    <link href='/css/blueprint/ie.css' media='screen, projection' type='text/css' />
+    <link href='/css/coderay.css' rel='stylesheet' type='text/css' />
+    <link href='/css/site.css' media='screen, projection' rel='stylesheet' type='text/css' />
+  </head>
+  <body>
+    <div id='main'>
+      <div id='header'>
+        <div class='inner'>
+          <div class='right'>
+            <form action='http://www.google.com/cse' id='cse-search-box'>
+              Search:
+              <br />
+              <input name='cx' type='hidden' value='012923036574958016342:li5hnoda-l4' />
+              <input name='ie' type='hidden' value='UTF-8' />
+              <input name='q' size='28' />
+              <input name='sa' type='submit' value='Go' />
+              <input name='siteurl' type='hidden' value='www.gmodules.com/ig/ifr?url=http://www.google.com/cse/api/012923036574958016342/cse/li5hnoda-l4/gadget&amp;synd=open&amp;w=294&amp;h=41&amp;title=Webbynode+Guides&amp;border=%23ffffff%7C3px%2C1px+solid+%23999999&amp;source=http%3A%2F%2Fwww.gmodules.com%2Fig%2Fcreator%3Fhl%3Den%26url%3Dhttp%253A%252F%252Fwww.google.com%252Fcse%252Fapi%252F012923036574958016342%252Fcse%252Fli5hnoda-l4%252Fgadget' />
+            </form>
+          </div>
+          <p class='title'>
+            <a href='/'>
+              Webbynode Guides
+            </a>
+          </p>
+        </div>
+      </div>
+      <div class='article' id='content'>
+        <div class='column span-6' id='toc'>
+          <div class='inner'>
+            <h4>
+              Rapid App Topics
+            </h4>
+            <ul>
+              <li><a href="index.html">Index</a></li>
+              <li><a href="preparation.html">Preparation</a></li>
+              <li><a href="bootstrapping.html">Bootstrapping</a></li>
+              <li><a href="publishing.html">Publishing</a></li>
+              <li><a href="updating.html">Updating</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class='inner'>
+          <h1>Rapid Application Deployment Engine</h1>&#x000A;<h2>Updating</h2>&#x000A;<p>To update an already published app, you just have to follow the git workflow you&#8217;re probably already used to.</p>&#x000A;<p>After your changes have been saved, you&#8217;ll have to commit them:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ git add .&#x000A;$ git commit -m &quot;My lovely changeset&quot;&#x000A;</pre>&#x000A;</div>&#x000A;<p>And then, again:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ webbynode push&#x000A;Publishing myapp to Webbynode...&#x000A;mkdir: created directory `myapp'&#x000A;Counting objects: 86, done.&#x000A;...&#x000A;</pre>&#x000A;</div>&#x000A;<p>And that&#8217;s it. The same process will happen again.</p>&#x000A;<p>However, we have a safety system in place. Let&#8217;s say you made a lot of changes but forgot to commit them using <code>git</code>. The Webbynode gem will give you a nice warning:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ wn push&#x000A;Cannot push because you have pending changes. Do a git commit or add changes &#x000A;to .gitignore.&#x000A;</pre>&#x000A;</div>&#x000A;<p>At this point you should choose what to do. Run the <code>git status</code> to check what changes are pending:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ git status&#x000A;# On branch master&#x000A;# Changed but not updated:&#x000A;#   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)&#x000A;#   (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)&#x000A;#&#x000A;#       modified:   README&#x000A;#&#x000A;# Untracked files:&#x000A;#   (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)&#x000A;#&#x000A;#       temp/&#x000A;no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)&#x000A;</pre>&#x000A;</div>&#x000A;<p>In this case, we have two changes it seems. I want to commit the <code>README</code> but not the <code>temp/</code> folder. So I just add the folder to the .gitignore file:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ echo &quot;\ntemp/&quot; &gt;&gt; .gitignore&#x000A;$ git status&#x000A;# On branch master&#x000A;# Changed but not updated:&#x000A;#   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)&#x000A;#   (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)&#x000A;#&#x000A;#       modified:   .gitignore&#x000A;#       modified:   README&#x000A;#&#x000A;no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)&#x000A;</pre>&#x000A;</div>&#x000A;<p>And now it looks good. So do a <code>git commit</code> and we&#8217;re ready to push again:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ git commit -am &quot;Fixed README and added temp to .gitignore&quot; &#x000A;[master 7d63ae9] Fixed README and added temp to .gitignore&#x000A; 2 files changed, 4 insertions(+), 1 deletions(-)&#x000A; &#x000A;$ wn push&#x000A;[imac] fcoury:~/Projects/sampleapp [git:master] → wn push&#x000A;[Webbynode] Pushing sampleapp&#x000A;&#x000A;(...)&#x000A;&#x000A;----------------------------&#x000A;  Webbynode git deployment &#x000A;----------------------------&#x000A;&#x000A;Nginx+Passenger webserver detected...&#x000A;Setting up DNS...&#x000A;&#x000A;Deploying application sampleapp as sampleapp.webbyapp.com...&#x000A;&#x000A;(...)&#x000A;&#x000A;sampleapp deployed successfully.&#x000A;&#x000A;Created http://sampleapp.webbyapp.com/&#x000A;&#x000A;To git@67.23.79.32:sampleapp&#x000A;   eeaa391..7d63ae9  master -&gt; master&#x000A;&#x000A;[Webbynode] Finished pushing sampleapp&#x000A;</pre>&#x000A;</div>&#x000A;<p>This enforcement of a clean git repo before publishing can be overridden by the <code>--dirty</code> clause, like seen on <code>push</code>&#8217;s command help:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ wn push --help&#x000A;Sends pending changes on the current application to your Webby&#x000A;Usage: webbynode push [options]&#x000A;Options:&#x000A;    --dirty             Allows pushing even if the current application has git &#x000A;                        changes pending&#x000A;</pre>&#x000A;</div>&#x000A;&#x000A;<p>This very same process can be done for Rack applications, as long as you have the necessary gems installed during the preparation of your Webby.</p>&#x000A;<h2><a name="workflow"> </a>Workflow</h2>&#x000A;<p>Please note that using the Webbynode gem does not replace the need for keeping your source under a version control system.</p>&#x000A;<h4>Source Control Workflow</h4>&#x000A;<p>You need to keep the same workflow for your source control. If you are using <code>git</code> for instance, continue applying the usual workflow:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>... changes ...&#x000A;$ git add .&#x000A;$ git commit -m &quot;Summary of changes&quot;&#x000A;... repeat commit cycles as needed ...&#x000A;$ git merge&#x000A;... etc ...&#x000A;$ git push&#x000A;... repeat ...&#x000A;</pre>&#x000A;</div>&#x000A;<p>When your application is tested and ready to be updated on your Webby, use the Deployment Workflow below</p>&#x000A;<h4>Deployment Workflow</h4>&#x000A;<p>After you finish your regular Source Control Workflow, perform all the merges (if applicable), you can now push your changes to Webbynode and publish them.</p>&#x000A;<p>Taking into consideration the workflow above, all you have to do, in addition to the latest <code>git push</code> is:</p>&#x000A;<div class="CodeRay">&#x000A;<pre># last git push&#x000A;$ git push&#x000A;&#x000A;# now we'll deploy&#x000A;$ wn push&#x000A;Publishing myapp to Webbynode...&#x000A;mkdir: created directory `myapp'&#x000A;Counting objects: 86, done.&#x000A;Delta compression using up to 2 threads.&#x000A;Compressing objects: 100% (72/72), done.&#x000A;Writing objects: 100% (86/86), 82.72 KiB, done.&#x000A;Total 86 (delta 11), reused 0 (delta 0)&#x000A;Checked out master branch&#x000A;&#x000A;----------------------------&#x000A;  Webbynode git deployment &#x000A;----------------------------&#x000A;(...)&#x000A;</pre>&#x000A;</div>&#x000A;<p>After deploying, you should start a new Source Control Workflow, until it comes time to publish again.</p>&#x000A;<h4>Distributed Teams</h4>&#x000A;<p>Some advice for distributed teams is to have the role of a Deployment Manager. This team member is usually responsible for merging all the changes from other developers, testing them and finally deploying them.</p>&#x000A;<p>Assuming this is something you want to do and also assuming you&#8217;re using <code>git</code> here is one example of a possible workflow:</p>&#x000A;<p><strong>Developer 1</strong></p>&#x000A;<div class="CodeRay">&#x000A;<pre># creates a feature branch&#x000A;$ git checkout -b feature_1&#x000A;&#x000A;# adds and commits the changes&#x000A;$ git add .&#x000A;$ git commit -m &quot;Implemented Feature 1&quot;&#x000A;&#x000A;# perform and tests all the changes&#x000A;$ git checkout master&#x000A;&#x000A;# merges feature&#x000A;$ git merge --no-ff feature_1&#x000A;&#x000A;# pushes to source control server&#x000A;$ git push&#x000A;</pre>&#x000A;</div>&#x000A;<p><strong>Developer 2</strong></p>&#x000A;<div class="CodeRay">&#x000A;<pre># creates a feature branch&#x000A;$ git checkout -b feature_2&#x000A;&#x000A;# adds and commits the changes&#x000A;$ git add .&#x000A;$ git commit -m &quot;Implemented Feature 2&quot;&#x000A;&#x000A;# perform and tests all the changes&#x000A;$ git checkout master&#x000A;&#x000A;# merges feature&#x000A;$ git merge --no-ff feature_2&#x000A;&#x000A;# pushes to source control server&#x000A;$ git push&#x000A;</pre>&#x000A;</div>&#x000A;<p><strong>Deployer (or Configuration Manager)</strong></p>&#x000A;<div class="CodeRay">&#x000A;<pre># checks out the branch to deploy&#x000A;$ git checkout release&#x000A;&#x000A;# merges feature_1&#x000A;$ git merge --no-ff feature_1&#x000A;&#x000A;# tests...&#x000A;&#x000A;# merges feature_x&#x000A;$ git merge --no-ff feature_x&#x000A;&#x000A;# optional: tag the release&#x000A;$ git tag release_abcdef_102&#x000A;&#x000A;# deploys to Webbynode&#x000A;$ webbynode push&#x000A;</pre>&#x000A;</div>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+        </div>
+      </div>
+    </div>
+    <div id='footer'>
+      <div class='inner'>
+        Copyright &copy; 2010-2020 Webbynode
+      </div>
+    </div>
+    <script type='text/javascript'>
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type='text/javascript'>
+      try {
+      var pageTracker = _gat._getTracker("UA-12533000-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
+  </body>
+</html>

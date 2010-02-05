@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang='en-us' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <meta content='text/html; charset=utf-8' http-equiv='content-type' />
+    <meta content='Z_wF3a4y6_g8W7oFyGyuXoS8q4dTgshb0bDplfKsevc' name='google-site-verification' />
+    <title>
+      Rapid Application Deployment Engine
+    </title>
+    <meta content='&lt;%= @page.author %&gt;' name='author' />
+    <link href='/css/blueprint/screen.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <!--[if IE]>
+      <link href='/css/blueprint/print.css' media='print' rel='stylesheet' type='text/css' />
+    <![endif]-->
+    <link href='/css/blueprint/ie.css' media='screen, projection' type='text/css' />
+    <link href='/css/coderay.css' rel='stylesheet' type='text/css' />
+    <link href='/css/site.css' media='screen, projection' rel='stylesheet' type='text/css' />
+  </head>
+  <body>
+    <div id='main'>
+      <div id='header'>
+        <div class='inner'>
+          <div class='right'>
+            <form action='http://www.google.com/cse' id='cse-search-box'>
+              Search:
+              <br />
+              <input name='cx' type='hidden' value='012923036574958016342:li5hnoda-l4' />
+              <input name='ie' type='hidden' value='UTF-8' />
+              <input name='q' size='28' />
+              <input name='sa' type='submit' value='Go' />
+              <input name='siteurl' type='hidden' value='www.gmodules.com/ig/ifr?url=http://www.google.com/cse/api/012923036574958016342/cse/li5hnoda-l4/gadget&amp;synd=open&amp;w=294&amp;h=41&amp;title=Webbynode+Guides&amp;border=%23ffffff%7C3px%2C1px+solid+%23999999&amp;source=http%3A%2F%2Fwww.gmodules.com%2Fig%2Fcreator%3Fhl%3Den%26url%3Dhttp%253A%252F%252Fwww.google.com%252Fcse%252Fapi%252F012923036574958016342%252Fcse%252Fli5hnoda-l4%252Fgadget' />
+            </form>
+          </div>
+          <p class='title'>
+            <a href='/'>
+              Webbynode Guides
+            </a>
+          </p>
+        </div>
+      </div>
+      <div class='article' id='content'>
+        <div class='column span-6' id='toc'>
+          <div class='inner'>
+            <h4>
+              Rapid App Topics
+            </h4>
+            <ul>
+              <li><a href="index.html">Index</a></li>
+              <li><a href="preparation.html">Preparation</a></li>
+              <li><a href="bootstrapping.html">Bootstrapping</a></li>
+              <li><a href="publishing.html">Publishing</a></li>
+              <li><a href="updating.html">Updating</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class='inner'>
+          <h1>Rapid Application Deployment Engine</h1>&#x000A;<h2>Preparation</h2>&#x000A;<p>In order to use the Rapid App Deployment, you have to redeploy your Webby with this stack, but this just has to be done once. After that, you&#8217;ll be able to add new apps on the fly, without loosing what&#8217;s already configured on your Webby.</p>&#x000A;<p>Here&#8217;s a step-by-step guide of the options you need to choose:</p>&#x000A;<h4>Choose the Rails ReadyStack</h4>&#x000A;<p><img src="images/rapidapp-step1.jpg"></p>&#x000A;<h4>Choose <em>WebServer and Proxy</em> and <em>Database Server</em></h4>&#x000A;<p>Right now both <em>Apache2</em> and <em>nginx</em> with <em>Passenger</em> are supported. Both databases &#8211; <em>MySQL</em> and <em>PostgreSQL</em> &#8211; are also supported.</p>&#x000A;<p><img src="images/rapidapp-step2.jpg"></p>&#x000A;<h4>Choose Rapid App Deployment option</h4>&#x000A;<p><img src="images/rapidapp-step3.jpg"></p>&#x000A;<h2>Configuration</h2>&#x000A;<p>There are a couple of configuration settings you can choose before deploying:</p>&#x000A;<p><img src="images/rapidapp-step4.jpg"></p>&#x000A;<h4>App Base Path</h4>&#x000A;<p>That&#8217;s the directory where all your apps will be deployed.</p>&#x000A;<p>Let&#8217;s say you deploy 3 applications, called <code>blog</code>, <code>todo</code> and <code>shopping_list</code>. Here&#8217;s how your Base Path folder structure will look like, assuming you kept the default value of <code>/var/rails</code>:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>var&#x000A; `- rails&#x000A;     |- blog&#x000A;     |- todo&#x000A;     `- shopping_list&#x000A;</pre>&#x000A;</div>&#x000A;<h4>Password for deploy user</h4>&#x000A;<p>This is the password you&#8217;ll have to type when deploying.</p>&#x000A;<p>An user called <code>git</code> is always created when installing the Rapid App stack. This option let&#8217;s you pick a password for this user.</p>&#x000A;<h4>Rack frameworks</h4>&#x000A;<p>Pick what Rack Frameworks RubyGems you want to install.</p>&#x000A;<p>If you&#8217;re planning on deploying some Sinatra, Ramaze, Rango or Merb apps, it may be a good idea to bootstrap your Webby with the corresponding gems. This way you avoid having to log into your Webby to install them. Choose as many as you want.</p>&#x000A;<h4>Rails 3.0 beta</h4>&#x000A;<p>Rails 3.0 beta was release February 4, and we&#8217;re already supporting deployment of apps built using this framework. Apps using this framework can be deployed <em>in parallel</em> to Rails 2.3.x and PHP apps. In order to enable this option, just check the checkbox below the Rails version dropdown:</p>&#x000A;<p><img src="images/rapidapp-rails30.png"></p>&#x000A;<p><a href="bootstrapping.html">Continue with Bootstrapping&#8230;</a></p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+        </div>
+      </div>
+    </div>
+    <div id='footer'>
+      <div class='inner'>
+        Copyright &copy; 2010-2020 Webbynode
+      </div>
+    </div>
+    <script type='text/javascript'>
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type='text/javascript'>
+      try {
+      var pageTracker = _gat._getTracker("UA-12533000-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
+  </body>
+</html>

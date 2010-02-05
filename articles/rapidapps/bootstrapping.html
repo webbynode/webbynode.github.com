@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang='en-us' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <meta content='text/html; charset=utf-8' http-equiv='content-type' />
+    <meta content='Z_wF3a4y6_g8W7oFyGyuXoS8q4dTgshb0bDplfKsevc' name='google-site-verification' />
+    <title>
+      Rapid Application Deployment Engine
+    </title>
+    <meta content='&lt;%= @page.author %&gt;' name='author' />
+    <link href='/css/blueprint/screen.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <!--[if IE]>
+      <link href='/css/blueprint/print.css' media='print' rel='stylesheet' type='text/css' />
+    <![endif]-->
+    <link href='/css/blueprint/ie.css' media='screen, projection' type='text/css' />
+    <link href='/css/coderay.css' rel='stylesheet' type='text/css' />
+    <link href='/css/site.css' media='screen, projection' rel='stylesheet' type='text/css' />
+  </head>
+  <body>
+    <div id='main'>
+      <div id='header'>
+        <div class='inner'>
+          <div class='right'>
+            <form action='http://www.google.com/cse' id='cse-search-box'>
+              Search:
+              <br />
+              <input name='cx' type='hidden' value='012923036574958016342:li5hnoda-l4' />
+              <input name='ie' type='hidden' value='UTF-8' />
+              <input name='q' size='28' />
+              <input name='sa' type='submit' value='Go' />
+              <input name='siteurl' type='hidden' value='www.gmodules.com/ig/ifr?url=http://www.google.com/cse/api/012923036574958016342/cse/li5hnoda-l4/gadget&amp;synd=open&amp;w=294&amp;h=41&amp;title=Webbynode+Guides&amp;border=%23ffffff%7C3px%2C1px+solid+%23999999&amp;source=http%3A%2F%2Fwww.gmodules.com%2Fig%2Fcreator%3Fhl%3Den%26url%3Dhttp%253A%252F%252Fwww.google.com%252Fcse%252Fapi%252F012923036574958016342%252Fcse%252Fli5hnoda-l4%252Fgadget' />
+            </form>
+          </div>
+          <p class='title'>
+            <a href='/'>
+              Webbynode Guides
+            </a>
+          </p>
+        </div>
+      </div>
+      <div class='article' id='content'>
+        <div class='column span-6' id='toc'>
+          <div class='inner'>
+            <h4>
+              Rapid App Topics
+            </h4>
+            <ul>
+              <li><a href="index.html">Index</a></li>
+              <li><a href="preparation.html">Preparation</a></li>
+              <li><a href="bootstrapping.html">Bootstrapping</a></li>
+              <li><a href="publishing.html">Publishing</a></li>
+              <li><a href="updating.html">Updating</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class='inner'>
+          <h1>Rapid Application Deployment Engine</h1>&#x000A;<h2>Bootstrapping</h2>&#x000A;<p>Before deploying your application, you need to specify a couple of configuration options. The first and most important is<br />&#x000A;where you&#8217;ll want to install it.</p>&#x000A;<p>In order to do that, you&#8217;ll need to install the Webbynode&#8217;s RubyGem, by executing the following command:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ sudo gem install webbynode&#x000A;&#x000A;-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-&#x000A;      Webbynode Rapid Deployment Gem&#x000A;-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-&#x000A;&#x000A;This deployment engine is highly experimental and&#x000A;should be considered beta code for now.&#x000A;&#x000A;For a quickstart:&#x000A;http://guides.webbynode.com/articles/readystacks/rapid-apps.html&#x000A;&#x000A;Successfully installed webbynode-0.2.0&#x000A;1 gem installed&#x000A;</pre>&#x000A;</div>&#x000A;<p>Once it&#8217;s done, you have to initialize your app by running the <code>init</code> command and indicating to which Webby you want to deploy your app.</p>&#x000A;<p>In case you don&#8217;t remember your Webbies by name or IP, you can use the <code>webbies</code> command to get a list:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ wn webbies&#x000A;Fetching list of your Webbies...&#x000A;&#x000A;  Webbies         IP              Node      Plan            Status         &#x000A;  webby3067       61.21.71.31     miami-b02 Webbybeta       on&#x000A;  sandbox         201.81.121.201  miami-b15 Webbybeta       on&#x000A;&#x000A;</pre>&#x000A;</div>&#x000A;<p>For this example, let&#8217;s say I want to install to <code>sandbox</code>.</p>&#x000A;<p>Now that we know where to deploy, we run the <code>init</code> command. Besides the Webby, you can specify the DNS you want your app to respond to.</p>&#x000A;<p>When in doubt about any command of the Webbynode Gem, you can use the <code>--help</code> option and a nice explanation of the command and it&#8217;s options will be displayed. Here&#8217;s the help for the init command we&#8217;re going to run:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ wn init --help&#x000A;&#x000A;Prepares the application on current folder for deployment&#x000A;Usage: webbynode init webby [dns] [options]&#x000A;Parameters:&#x000A;    webby               Name or IP of the Webby to deploy to&#x000A;    dns                 The DNS used for this application, optional&#x000A;Options:&#x000A;    --adddns            Creates the DNS entries for the domain&#x000A;    --engine            Sets the application engine for the app&#x000A;</pre>&#x000A;</div>&#x000A;<p>If you don&#8217;t specify the domain name during initialization, the Rapid App Engine will assign a temporary one, so you can use your website and even share it without having to buy a domain.</p>&#x000A;<p>However, if you already own an domain and considering its Name Servers are already pointing to Webbynode&#8217;s Name Servers (<a href="/articles/webbymanager/dns-setup.html">check this guide to make sure</a>), the gem can even create the appropriate configuration entries for you. If that&#8217;s what you want, just use the <code>--adddns</code> option.</p>&#x000A;<p>OK, so let&#8217;s say you have created a Rails app called <code>sampleapp</code>. If we don&#8217;t don&#8217;t provide the domain option as described above, it will respond to <code>sampleapp.webbyapp.com</code> (it&#8217;s always <em>name-of-app</em><code>.webbyapp.com</code> &#8212; in case your app&#8217;s name is already taken, we&#8217;ll add numeric suffixes &#8212; like 1, 2, &#8230; &#8212; until we find an unique name for you).</p>&#x000A;<p>So let&#8217;s try it:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ cd ~/dev/sampleapp&#x000A;$ wn init sandbox&#x000A;[Webbynode] Initializing application sampleapp with dns sampleapp&#x000A;            Retrieving IP for Webby sandbox...&#x000A;            Initializing directory structure...&#x000A;            Initializing git and applying initial commit...&#x000A;            Adding webbynode as git remote...&#x000A;&#x000A;[Webbynode] Application sampleapp ready for Rapid Deployment&#x000A;</pre>&#x000A;</div>&#x000A;<p>Here&#8217;s a summary of what just happened:</p>&#x000A;<ul>&#x000A;	<li><em>If your application doesn&#8217;t have a git repo</em>, we&#8217;ll create one for you. After that, we&#8217;ll create a new remote source for this new git repo called <code>webbynode</code> pointing to your Webby&#8217;s IP;</li>&#x000A;</ul>&#x000A;<ul>&#x000A;	<li><em>Now, if you app already has a git repo</em>, we&#8217;ll just create the new remote as described above;</li>&#x000A;</ul>&#x000A;<ul>&#x000A;	<li>We add a couple of configuration files to your repository;</li>&#x000A;</ul>&#x000A;<ul>&#x000A;	<li>And we create a new commit for this change.</li>&#x000A;</ul>&#x000A;<p>And your app is now ready to be published. Congratulations!</p>&#x000A;<p><a href="publishing.html">Continue with Publishing&#8230;</a></p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+        </div>
+      </div>
+    </div>
+    <div id='footer'>
+      <div class='inner'>
+        Copyright &copy; 2010-2020 Webbynode
+      </div>
+    </div>
+    <script type='text/javascript'>
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type='text/javascript'>
+      try {
+      var pageTracker = _gat._getTracker("UA-12533000-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
+  </body>
+</html>

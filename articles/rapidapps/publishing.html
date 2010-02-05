@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang='en-us' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <meta content='text/html; charset=utf-8' http-equiv='content-type' />
+    <meta content='Z_wF3a4y6_g8W7oFyGyuXoS8q4dTgshb0bDplfKsevc' name='google-site-verification' />
+    <title>
+      Rapid Application Deployment Engine
+    </title>
+    <meta content='&lt;%= @page.author %&gt;' name='author' />
+    <link href='/css/blueprint/screen.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <!--[if IE]>
+      <link href='/css/blueprint/print.css' media='print' rel='stylesheet' type='text/css' />
+    <![endif]-->
+    <link href='/css/blueprint/ie.css' media='screen, projection' type='text/css' />
+    <link href='/css/coderay.css' rel='stylesheet' type='text/css' />
+    <link href='/css/site.css' media='screen, projection' rel='stylesheet' type='text/css' />
+  </head>
+  <body>
+    <div id='main'>
+      <div id='header'>
+        <div class='inner'>
+          <div class='right'>
+            <form action='http://www.google.com/cse' id='cse-search-box'>
+              Search:
+              <br />
+              <input name='cx' type='hidden' value='012923036574958016342:li5hnoda-l4' />
+              <input name='ie' type='hidden' value='UTF-8' />
+              <input name='q' size='28' />
+              <input name='sa' type='submit' value='Go' />
+              <input name='siteurl' type='hidden' value='www.gmodules.com/ig/ifr?url=http://www.google.com/cse/api/012923036574958016342/cse/li5hnoda-l4/gadget&amp;synd=open&amp;w=294&amp;h=41&amp;title=Webbynode+Guides&amp;border=%23ffffff%7C3px%2C1px+solid+%23999999&amp;source=http%3A%2F%2Fwww.gmodules.com%2Fig%2Fcreator%3Fhl%3Den%26url%3Dhttp%253A%252F%252Fwww.google.com%252Fcse%252Fapi%252F012923036574958016342%252Fcse%252Fli5hnoda-l4%252Fgadget' />
+            </form>
+          </div>
+          <p class='title'>
+            <a href='/'>
+              Webbynode Guides
+            </a>
+          </p>
+        </div>
+      </div>
+      <div class='article' id='content'>
+        <div class='column span-6' id='toc'>
+          <div class='inner'>
+            <h4>
+              Rapid App Topics
+            </h4>
+            <ul>
+              <li><a href="index.html">Index</a></li>
+              <li><a href="preparation.html">Preparation</a></li>
+              <li><a href="bootstrapping.html">Bootstrapping</a></li>
+              <li><a href="publishing.html">Publishing</a></li>
+              <li><a href="updating.html">Updating</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class='inner'>
+          <h1>Rapid Application Deployment Engine</h1>&#x000A;<h2>Publishing</h2>&#x000A;<p>When publishing your application, the Rapid App Engine will transfer all the code to your Webby, set up the database, the DNS entries (if applicable), configure the Web Server (Apache2 or nginx) and setup additional features (like backup) that we&#8217;ll see later.</p>&#x000A;<p>Before starting your first publishing there&#8217;s something you can do to make upcoming deployments a little easier. You can add your SSH key to your Webby&#8217;s deployment user.</p>&#x000A;<p>Hard? Not really. We have a command for that: <code>add_key</code>. Just go ahead and run this:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ wn add_key&#x000A;Enter your deployment password for xx.xx.xx.xx: &#x000A;Your local SSH Key has been added to your webby!&#x000A;</pre>&#x000A;</div>&#x000A;<p>With that done, it should be the last time we prompt you for a password (at least until you change to another machine).</p>&#x000A;<p>Let&#8217;s now deploy the application with the <code>push</code> command:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ webbynode push&#x000A;[Webbynode] Pushing sampleapp&#x000A;mkdir: created directory `sampleapp'&#x000A;Counting objects: 88, done.&#x000A;Delta compression using up to 2 threads.&#x000A;Compressing objects: 100% (73/73), done.&#x000A;Writing objects: 100% (88/88), 80.80 KiB, done.&#x000A;Total 88 (delta 11), reused 0 (delta 0)&#x000A;Checked out master branch&#x000A;&#x000A;----------------------------&#x000A;  Webbynode git deployment &#x000A;----------------------------&#x000A;&#x000A;Nginx+Passenger webserver detected...&#x000A;Setting up DNS...&#x000A;&#x000A;Deploying application sampleapp as sampleapp.webbyapp.com...&#x000A;&#x000A;Configuring Rails application...&#x000A;  =&gt; Configuring nginx vHost...&#x000A;  =&gt; Configuring database...&#x000A;  =&gt; Configuring database.yml...&#x000A;  =&gt; Installing missing gems...&#x000A;  =&gt; Migrating database...&#x000A;/var/rails/sampleapp/.git&#x000A;&#x000A;Restarting nginx&#x000A;&#x000A;sampleapp deployed successfully.&#x000A;&#x000A;Created http://sampleapp.webbyapp.com/&#x000A;&#x000A;To git@67.23.79.32:sampleapp&#x000A; * [new branch]      master -&gt; master&#x000A;&#x000A;[Webbynode] Finished pushing sampleapp&#x000A;</pre>&#x000A;</div>&#x000A;<p>At this point you should be able to open your browser and visit http://sample.webbyapp.com and get your Rails app default page. Win!</p>&#x000A;<p><a href="updating.html">Continue with Updating&#8230;</a></p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+        </div>
+      </div>
+    </div>
+    <div id='footer'>
+      <div class='inner'>
+        Copyright &copy; 2010-2020 Webbynode
+      </div>
+    </div>
+    <script type='text/javascript'>
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type='text/javascript'>
+      try {
+      var pageTracker = _gat._getTracker("UA-12533000-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
+  </body>
+</html>
