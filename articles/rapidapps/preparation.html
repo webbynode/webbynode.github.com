@@ -37,27 +37,46 @@
           </p>
         </div>
       </div>
-      <div class='article' id='content'>
-        <div class='column span-6' id='toc'>
-          <div class='inner'>
-            <h4>
-              Rapid App Topics
-            </h4>
+      <div class='article rapidapp' id='content'>
+        <div class='inner'>
+          <div class='column span-15 first'>
+            <h1>Rapid Application Deployment Engine</h1>&#x000A;<h2>Preparation</h2>&#x000A;<p>In order to use the Rapid App Deployment, you have to redeploy your Webby with this stack, but this just has to be done once. After that, you&#8217;ll be able to add new apps on the fly, without loosing what&#8217;s already configured on your Webby.</p>&#x000A;<p>Here&#8217;s a step-by-step guide of the options you need to choose:</p>&#x000A;<h4>Choose the Rails ReadyStack</h4>&#x000A;<p><img src="images/rapidapp-step1.jpg"></p>&#x000A;<h4>Choose <em>WebServer and Proxy</em> and <em>Database Server</em></h4>&#x000A;<p>Right now both <em>Apache2</em> and <em>nginx</em> with <em>Passenger</em> are supported. Both databases &#8211; <em>MySQL</em> and <em>PostgreSQL</em> &#8211; are also supported.</p>&#x000A;<p><img src="images/rapidapp-step2.jpg"></p>&#x000A;<h4>Choose Rapid App Deployment option</h4>&#x000A;<p><img src="images/rapidapp-step3.jpg"></p>&#x000A;<h2>Configuration</h2>&#x000A;<p>There are a couple of configuration settings you can choose before deploying:</p>&#x000A;<p><img src="images/rapidapp-step4.jpg"></p>&#x000A;<h4>App Base Path</h4>&#x000A;<p>That&#8217;s the directory where all your apps will be deployed.</p>&#x000A;<p>Let&#8217;s say you deploy 3 applications, called <code>blog</code>, <code>todo</code> and <code>shopping_list</code>. Here&#8217;s how your Base Path folder structure will look like, assuming you kept the default value of <code>/var/rails</code>:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>var&#x000A; `- rails&#x000A;     |- blog&#x000A;     |- todo&#x000A;     `- shopping_list&#x000A;</pre>&#x000A;</div>&#x000A;<h4>Password for deploy user</h4>&#x000A;<p>This is the password you&#8217;ll have to type when deploying.</p>&#x000A;<p>An user called <code>git</code> is always created when installing the Rapid App stack. This option let&#8217;s you pick a password for this user.</p>&#x000A;<h4>Rack frameworks</h4>&#x000A;<p>Pick what Rack Frameworks RubyGems you want to install.</p>&#x000A;<p>If you&#8217;re planning on deploying some Sinatra, Ramaze, Rango or Merb apps, it may be a good idea to bootstrap your Webby with the corresponding gems. This way you avoid having to log into your Webby to install them. Choose as many as you want.</p>&#x000A;<h4>Rails 3.0 beta</h4>&#x000A;<p>Rails 3.0 beta was release February 4, and we&#8217;re already supporting deployment of apps built using this framework. Apps using this framework can be deployed <em>in parallel</em> to Rails 2.3.x and PHP apps. In order to enable this option, just check the checkbox below the Rails version dropdown:</p>&#x000A;<p><img src="images/rapidapp-rails30.png"></p>&#x000A;<p><a href="bootstrapping.html">Continue with Bootstrapping&#8230;</a></p>&#x000A;
+          </div>
+        </div>
+        <div class='column span-6 prepend-1 last' id='sidebar'>
+          <div class='box'>
+            <p class='title'>
+              <b>
+                Basic Topics
+              </b>
+            </p>
             <ul>
               <li><a href="index.html">Index</a></li>
               <li><a href="preparation.html">Preparation</a></li>
               <li><a href="bootstrapping.html">Bootstrapping</a></li>
               <li><a href="publishing.html">Publishing</a></li>
               <li><a href="updating.html">Updating</a></li>
-              <li><a href="troubleshooting.html">Troubleshoot</a></li>
+              <li><a href="workflow.html">Workflow</a></li>
+              <li><a href="troubleshooting.html">Troubleshooting</a></li>
+              <li><a href="deleting.html">Deleting</a></li>
             </ul>
           </div>
-        </div>
-        <div class='inner'>
-          <h1>Rapid Application Deployment Engine</h1>&#x000A;<h2>Preparation</h2>&#x000A;<p>In order to use the Rapid App Deployment, you have to redeploy your Webby with this stack, but this just has to be done once. After that, you&#8217;ll be able to add new apps on the fly, without loosing what&#8217;s already configured on your Webby.</p>&#x000A;<p>Here&#8217;s a step-by-step guide of the options you need to choose:</p>&#x000A;<h4>Choose the Rails ReadyStack</h4>&#x000A;<p><img src="images/rapidapp-step1.jpg"></p>&#x000A;<h4>Choose <em>WebServer and Proxy</em> and <em>Database Server</em></h4>&#x000A;<p>Right now both <em>Apache2</em> and <em>nginx</em> with <em>Passenger</em> are supported. Both databases &#8211; <em>MySQL</em> and <em>PostgreSQL</em> &#8211; are also supported.</p>&#x000A;<p><img src="images/rapidapp-step2.jpg"></p>&#x000A;<h4>Choose Rapid App Deployment option</h4>&#x000A;<p><img src="images/rapidapp-step3.jpg"></p>&#x000A;<h2>Configuration</h2>&#x000A;<p>There are a couple of configuration settings you can choose before deploying:</p>&#x000A;<p><img src="images/rapidapp-step4.jpg"></p>&#x000A;<h4>App Base Path</h4>&#x000A;<p>That&#8217;s the directory where all your apps will be deployed.</p>&#x000A;<p>Let&#8217;s say you deploy 3 applications, called <code>blog</code>, <code>todo</code> and <code>shopping_list</code>. Here&#8217;s how your Base Path folder structure will look like, assuming you kept the default value of <code>/var/rails</code>:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>var&#x000A; `- rails&#x000A;     |- blog&#x000A;     |- todo&#x000A;     `- shopping_list&#x000A;</pre>&#x000A;</div>&#x000A;<h4>Password for deploy user</h4>&#x000A;<p>This is the password you&#8217;ll have to type when deploying.</p>&#x000A;<p>An user called <code>git</code> is always created when installing the Rapid App stack. This option let&#8217;s you pick a password for this user.</p>&#x000A;<h4>Rack frameworks</h4>&#x000A;<p>Pick what Rack Frameworks RubyGems you want to install.</p>&#x000A;<p>If you&#8217;re planning on deploying some Sinatra, Ramaze, Rango or Merb apps, it may be a good idea to bootstrap your Webby with the corresponding gems. This way you avoid having to log into your Webby to install them. Choose as many as you want.</p>&#x000A;<h4>Rails 3.0 beta</h4>&#x000A;<p>Rails 3.0 beta was release February 4, and we&#8217;re already supporting deployment of apps built using this framework. Apps using this framework can be deployed <em>in parallel</em> to Rails 2.3.x and PHP apps. In order to enable this option, just check the checkbox below the Rails version dropdown:</p>&#x000A;<p><img src="images/rapidapp-rails30.png"></p>&#x000A;<p><a href="bootstrapping.html">Continue with Bootstrapping&#8230;</a></p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
+          <div class='box'>
+            <p class='title'>
+              <b>
+                Advanced Topics
+              </b>
+            </p>
+            <ul>
+              <li><a href="engines.html">Alternative Engines</a></li>
+              <li><a href="backup.html">Backup</a></li>
+              <li><a href="dns.html">Handling DNS</a></li>
+              <li><a href="webbyops.html">Start/Stop/Reboot</a></li>
+              <li><a href="hooks.html">Deployment Hooks</a></li>
+              <li><a href="remote.html">Remote Commands</a></li>
+              <li><a href="aliases.html">Aliases</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
