@@ -41,6 +41,24 @@
         <div class='inner'>
           <div class='column span-15 first'>
             <h1>Rapid Application Deployment Engine</h1>&#x000A;<h2>Handling DNS</h2>&#x000A;<p>You can change the DNS your Application responds to at any given time. That&#8217;s done using the <code>change_dns</code> command.</p>&#x000A;<p>Here&#8217;s how it&#8217;s used:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ wn change_dns rubyista.info&#x000A;[Webbynode] Changing DNS to rubyista.info...&#x000A;            Creating DNS entries for www.rubyista.info and &#x000A;              rubyista.info...&#x000A;            Your application will start responding to rubyista.info &#x000A;              after next deployment.&#x000A;</pre>&#x000A;</div>&#x000A;<p>Note that, if you use a domain, it will setup both domain.com and www.domain.com. Now with a subdomain, that won&#8217;t happen:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ wn change_dns subdomain.rubyista.info&#x000A;[Webbynode] Changing DNS to subdomain.rubyista.info...&#x000A;            Creating DNS entry for subdomain.rubyista.info...&#x000A;            Your application will start responding to &#x000A;              subdomain.rubyista.info after next deployment.&#x000A;</pre>&#x000A;</div>&#x000A;<p>And next time you push your app, it will start responding to this new DNS entry.</p>&#x000A;
+            <div class='master-separator'>
+              <div class='separator-wrapper'>
+                <div class='separator-label'>Comments</div>
+              </div>
+            </div>
+            <div id='disqus_thread'></div>
+            <script src='http://disqus.com/forums/webbynodeguides/embed.js' type='text/javascript'></script>
+            <noscript>
+              <a href='http://disqus.com/forums/webbynodeguides/?url=ref'>
+                View the discussion thread.
+              </a>
+            </noscript>
+            <a class='dsq-brlink' href='http://disqus.com'>
+              blog comments powered by
+              <span class='logo-disqus'>
+                Disqus
+              </span>
+            </a>
           </div>
         </div>
         <div class='column span-6 prepend-1 last' id='sidebar'>
