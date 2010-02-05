@@ -163,6 +163,8 @@ p.title {
     padding: 10px;
     padding-bottom: 0;
     font-size: 0.8em; }
+    #toc .inner h4 {
+      margin-bottom: 5px; }
 
 #sidebar {
   margin-top: 0;

@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang='en-us' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <meta content='text/html; charset=utf-8' http-equiv='content-type' />
+    <meta content='Z_wF3a4y6_g8W7oFyGyuXoS8q4dTgshb0bDplfKsevc' name='google-site-verification' />
+    <title>
+      Rapid Application Deployment Engine
+    </title>
+    <meta content='&lt;%= @page.author %&gt;' name='author' />
+    <link href='/css/blueprint/screen.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <!--[if IE]>
+      <link href='/css/blueprint/print.css' media='print' rel='stylesheet' type='text/css' />
+    <![endif]-->
+    <link href='/css/blueprint/ie.css' media='screen, projection' type='text/css' />
+    <link href='/css/coderay.css' rel='stylesheet' type='text/css' />
+    <link href='/css/site.css' media='screen, projection' rel='stylesheet' type='text/css' />
+  </head>
+  <body>
+    <div id='main'>
+      <div id='header'>
+        <div class='inner'>
+          <div class='right'>
+            <form action='http://www.google.com/cse' id='cse-search-box'>
+              Search:
+              <br />
+              <input name='cx' type='hidden' value='012923036574958016342:li5hnoda-l4' />
+              <input name='ie' type='hidden' value='UTF-8' />
+              <input name='q' size='28' />
+              <input name='sa' type='submit' value='Go' />
+              <input name='siteurl' type='hidden' value='www.gmodules.com/ig/ifr?url=http://www.google.com/cse/api/012923036574958016342/cse/li5hnoda-l4/gadget&amp;synd=open&amp;w=294&amp;h=41&amp;title=Webbynode+Guides&amp;border=%23ffffff%7C3px%2C1px+solid+%23999999&amp;source=http%3A%2F%2Fwww.gmodules.com%2Fig%2Fcreator%3Fhl%3Den%26url%3Dhttp%253A%252F%252Fwww.google.com%252Fcse%252Fapi%252F012923036574958016342%252Fcse%252Fli5hnoda-l4%252Fgadget' />
+            </form>
+          </div>
+          <p class='title'>
+            <a href='/'>
+              Webbynode Guides
+            </a>
+          </p>
+        </div>
+      </div>
+      <div class='article' id='content'>
+        <div class='column span-6' id='toc'>
+          <div class='inner'>
+            <h4>
+              Rapid App Topics
+            </h4>
+            <ul>
+              <li><a href="index.html">Index</a></li>
+              <li><a href="preparation.html">Preparation</a></li>
+              <li><a href="bootstrapping.html">Bootstrapping</a></li>
+              <li><a href="publishing.html">Publishing</a></li>
+              <li><a href="updating.html">Updating</a></li>
+              <li><a href="troubleshooting.html">Troubleshoot</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class='inner'>
+          <h1>Rapid Application Deployment Engine</h1>&#x000A;<h2>Troubleshooting</h2>&#x000A;<p><strong>Problem:</strong> I have deployed my application just fine but when I make changes and do a <code>webbynode push</code> nothing changes on the website.</p>&#x000A;<p><strong>Resolution:</strong></p>&#x000A;<p>Sometimes you may have forgotten to commit your changes and try a <code>webbynode push</code>.</p>&#x000A;<p>In order to make sure, try issuing the <code>git status</code> command. If you have made no changes since your last commit, here&#8217;s what you should see:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ git status&#x000A;# On branch master&#x000A;nothing to commit (working directory clean)&#x000A;</pre>&#x000A;</div>&#x000A;<p>However, if you find that you still have changes &#8211; and specially new files:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ git status&#x000A;# On branch master&#x000A;# Untracked files:&#x000A;#   (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)&#x000A;#&#x000A;#       this_is_a_new_file.txt&#x000A;nothing added to commit but untracked files present (use &quot;git add&quot; to track)&#x000A;</pre>&#x000A;</div>&#x000A;<p>If that&#8217;s your case, it&#8217;s just a matter of adding the new file and committing the change. You&#8217;ll see that after that you&#8217;ll <code>get nothing to commit</code>:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ git add .  &#x000A;&#x000A;$ git commit -m &quot;Added this_new_file&quot;&#x000A;[master d30cb5b] Added this_new_file&#x000A; 1 files changed, 1 insertions(+), 0 deletions(-)&#x000A; create mode 100644 this_is_a_new_file.txt&#x000A; &#x000A;$ git status&#x000A;# On branch master&#x000A;nothing to commit (working directory clean)&#x000A;</pre>&#x000A;</div>&#x000A;<p>Another <code>webbynode push</code> should take care of your problem.</p>&#x000A;<p>However, sometimes Apache (or nginx) can choke upon restarting. This problem is usually solved by logging into your Webby and manually restarting them:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>&#x000A;$ /etc/init.d/apache2 stop&#x000A;* Stopping web server apache2&#x000A;... waiting&#x000A;&#x000A;$ /etc/init.d/apache2 start&#x000A;* Starting web server apache2 &#x000A;</pre>&#x000A;</div>&#x000A;<p>or</p>&#x000A;<div class="CodeRay">&#x000A;<pre>&#x000A;$ /etc/init.d/nginx stop&#x000A;* Stopping Nginx Server...                     [ OK ]&#x000A; &#x000A;$ /etc/init.d/nginx start&#x000A;* Starting Nginx Server...                     [ OK ]&#x000A;</pre>&#x000A;</div>&#x000A;<p>If none of the above approaches solve your problem, log into your Webby, delete the app and start over (see next section for information about how to do it).</p>&#x000A;<hr/>&#x000A;<p><strong>Problem:</strong> After deploying a Rack application with <em>Sinatra / Merb / Ramaze / Rango</em> framework, my website doesn&#8217;t load.</p>&#x000A;<p><strong>Resolution:</strong></p>&#x000A;<p>This is usually caused because you don&#8217;t have a <code>public</code> directory inside your Rack app. In order to successfully deploy to Apache/nginx + Passenger, such folder is mandatory &#8211; as can be seen on the passenger docs <a href="http://www.modrails.com/documentation/Users%20guide%20Apache.html#_deploying_a_rack_based_ruby_application">here</a> and <a href="http://www.modrails.com/documentation/Users%20guide%20Nginx.html#deploying_a_rack_app">here</a>.</p>&#x000A;<p>Try adding the public folder (and any contents into it, so <code>git</code> allows you to commit a change) and pushing again.</p>&#x000A;<h2>Deleting apps</h2>&#x000A;<p>If by any chance you want to remove a running app, it&#8217;s just a matter of logging into your Webby and using the <code>delete_app</code> script, as illustrated here:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ delete_app myapp&#x000A;This will delete your app myapp and restart Apache.&#x000A;Are you sure? (y/n) y&#x000A;Deleting app at /var/rails/myapp...&#x000A;Removing vHost for myapp (myapp.webbyapp.com)...&#x000A;Restarting Apache...&#x000A;</pre>&#x000A;</div>&#x000A;<p>And now, what you&#8217;re waiting for? Get on the deploy early bandwagon.</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+        </div>
+      </div>
+    </div>
+    <div id='footer'>
+      <div class='inner'>
+        Copyright &copy; 2010-2020 Webbynode
+      </div>
+    </div>
+    <script type='text/javascript'>
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type='text/javascript'>
+      try {
+      var pageTracker = _gat._getTracker("UA-12533000-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
+  </body>
+</html>
