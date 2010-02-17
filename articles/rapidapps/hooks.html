@@ -4,7 +4,7 @@
     <meta content='text/html; charset=utf-8' http-equiv='content-type' />
     <meta content='Z_wF3a4y6_g8W7oFyGyuXoS8q4dTgshb0bDplfKsevc' name='google-site-verification' />
     <title>
-      Rapid Application Deployment Engine
+      rapp
     </title>
     <meta content='&lt;%= @page.author %&gt;' name='author' />
     <link href='/css/blueprint/screen.css' media='screen, projection' rel='stylesheet' type='text/css' />
@@ -40,7 +40,7 @@
       <div class='article rapidapp' id='content'>
         <div class='inner'>
           <div class='column span-15 first'>
-            <h1>Rapid Application Deployment Engine</h1>&#x000A;<h2>Deployment Hooks</h2>&#x000A;<p>Will be available soon.</p>&#x000A;
+            <h1>rapp</h1>&#x000A;<h2>Deployment Hooks</h2>&#x000A;<p>You can define tasks to be executed before pushing (locally) and after pushing (remotely) for each application. In order to do that, we use the <code>tasks</code> command.</p>&#x000A;<p>This command takes three arguments:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ wn tasks --help&#x000A;Manages tasks executed before or after you push your changes&#x000A;Usage: webbynode tasks action type [command]&#x000A;Parameters:&#x000A;    action              add, remove or show&#x000A;    type                before_push or after_push&#x000A;    command             task to perform, optional&#x000A;</pre>&#x000A;</div>&#x000A;<h4>Adding a new task</h4>&#x000A;<p>To add a new local task, you just have to use the <code>add</code> action of the <code>before_push</code> type. Let&#8217;s say we want to run <a href="http://documentcloud.github.com/jammit/">Jammit</a> to package our assets and upload it to our Webby:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ wn tasks add before_push jammit&#x000A;Before push task added.&#x000A;Current tasks for &quot;Before push&quot;:&#x000A;1. jammit&#x000A;</pre>&#x000A;</div>&#x000A;<p>and</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ wn tasks add before_push scp -r public/assets #{remote_app_path}/↩&#x000A;public&#x000A;&#x000A;Before push task added.&#x000A;&#x000A;Current tasks for &quot;Before push&quot;:&#x000A;1. jammit&#x000A;2. scp -r public/assets #{remote_app_path}/public&#x000A;</pre>&#x000A;</div>&#x000A;<h4>Listing current tasks</h4>&#x000A;<p>To check what tasks are currently configured before and after the deploy, use the <code>show</code> action:</p>&#x000A;<p>$ wn tasks show</p>&#x000A;
             <div class='master-separator'>
               <div class='separator-wrapper'>
                 <div class='separator-label'>Comments</div>
@@ -90,7 +90,7 @@
               <li><a href="backup.html">S3 Backup</a></li>
               <li><a href="dns.html">Handling DNS</a></li>
               <li><a href="webbyops.html">Start/Stop/Reboot</a></li>
-              <!-- %li <a href="hooks.html">Deployment Hooks</a> -->
+              <li><a href="hooks.html">Deployment Hooks</a></li>
               <!-- %li <a href="remote.html">Remote Commands</a> -->
               <!-- %li <a href="aliases.html">Aliases</a> -->
             </ul>
