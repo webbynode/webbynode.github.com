@@ -1,13 +1,13 @@
 body {
   line-height: 1.5em;
   font-size: 17px;
-  font-family: helvetica,arial,freesans,clean,sans-serif; }
+  font-family: helvetica, arial, freesans, clean, sans-serif; }
 
 html, body {
   height: 100%; }
 
 h2, h3, h4, h5, h6 {
-  color: #111; }
+  color: #111111; }
 
 h1 {
   border-bottom: 1px solid #333333;
@@ -34,37 +34,37 @@ h3 {
     text-decoration: none; }
 
 a {
-  color: #125AA7; }
+  color: #125aa7; }
   a:hover {
-    color: #125AA7; }
+    color: #125aa7; }
 
 blockquote {
-  color: #666; }
+  color: #666666; }
 
 pre {
-  background: #eee;
-  border: 1px solid #ddd; }
+  background: #eeeeee;
+  border: 1px solid #dddddd; }
 
 hr {
-  background: #B2CCFF;
-  color: #B2CCFF; }
+  background: #b2ccff;
+  color: #b2ccff; }
 
 table {
-  border-top: 1px solid #ddd;
-  border-left: 1px solid #ddd; }
+  border-top: 1px solid #dddddd;
+  border-left: 1px solid #dddddd; }
 
 th, td {
-  border-bottom: 1px solid #ddd;
-  border-right: 1px solid #ddd; }
+  border-bottom: 1px solid #dddddd;
+  border-right: 1px solid #dddddd; }
 
 p.quiet {
-  color: #666; }
+  color: #666666; }
 
 .alt {
-  color: #666; }
+  color: #666666; }
 
 p.title {
-  color: #111;
+  color: #111111;
   font-size: 2em;
   margin-bottom: 0.75em;
   font-weight: bold; }
@@ -80,6 +80,12 @@ p.title {
     font-height: normal;
     line-height: 1.5em; }
 
+code {
+  background: #e0e0e0;
+  font-size: 0.9em;
+  padding: 2px;
+  white-space: nowrap; }
+
 .CodeRay .no {
   display: none; }
 .CodeRay pre {
@@ -93,12 +99,12 @@ p.title {
 
 #header {
   align: center;
-  background-color: #6CA1CB;
+  background-color: #6ca1cb;
   padding-top: 20px;
   min-width: 950px;
   height: 80px;
   margin: 0;
-  border-bottom: 4px solid #5E8FBB; }
+  border-bottom: 4px solid #5e8fbb; }
   #header .inner {
     width: 870px;
     margin: 0 auto; }
@@ -119,13 +125,13 @@ p.title {
   -moz-background-origin: padding;
   overflow: hidden;
   align: center;
-  background-color: #5E8FBB;
+  background-color: #5e8fbb;
   padding-top: 10px;
   padding-bottom: 10px;
   min-width: 950px;
   height: 80px;
   margin: 0;
-  border-top: 4px solid #6CA1CB; }
+  border-top: 4px solid #6ca1cb; }
   #footer .inner {
     color: white;
     width: 870px;
@@ -137,17 +143,17 @@ p.title {
   line-height: 1;
   margin-bottom: 0.5em; }
   #header p.title a {
-    color: #111;
+    color: #111111;
     text-decoration: none; }
 
 #header p.right {
   float: right;
-  color: #000;
+  color: black;
   padding-right: 10px; }
 
 .right {
   float: right;
-  color: #000;
+  color: black;
   padding-right: 10px; }
 
 #content {
@@ -161,7 +167,7 @@ p.title {
 #toc {
   float: right;
   border: 1px;
-  background-color: #FCF1FB;
+  background-color: #fcf1fb;
   margin: 5px;
   margin-left: 20px; }
   #toc .inner {
