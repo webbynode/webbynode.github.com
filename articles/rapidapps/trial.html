@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang='en-us' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <meta content='text/html; charset=utf-8' http-equiv='content-type' />
+    <meta content='Z_wF3a4y6_g8W7oFyGyuXoS8q4dTgshb0bDplfKsevc' name='google-site-verification' />
+    <title>
+      Rapp Trial
+    </title>
+    <meta content='&lt;%= @page.author %&gt;' name='author' />
+    <link href='/css/blueprint/screen.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <!--[if IE]>
+      <link href='/css/blueprint/print.css' media='print' rel='stylesheet' type='text/css' />
+    <![endif]-->
+    <link href='/css/blueprint/ie.css' media='screen, projection' type='text/css' />
+    <link href='/css/coderay.css?id=1' rel='stylesheet' type='text/css' />
+    <link href='/css/site.css?id=1' media='screen, projection' rel='stylesheet' type='text/css' />
+  </head>
+  <body>
+    <div id='main'>
+      <div id='header'>
+        <div class='inner'>
+          <div class='right'>
+            <form action='http://www.google.com/cse' id='cse-search-box'>
+              Search:
+              <br />
+              <input name='cx' type='hidden' value='012923036574958016342:li5hnoda-l4' />
+              <input name='ie' type='hidden' value='UTF-8' />
+              <input name='q' size='28' />
+              <input name='sa' type='submit' value='Go' />
+              <input name='siteurl' type='hidden' value='www.gmodules.com/ig/ifr?url=http://www.google.com/cse/api/012923036574958016342/cse/li5hnoda-l4/gadget&amp;synd=open&amp;w=294&amp;h=41&amp;title=Webbynode+Guides&amp;border=%23ffffff%7C3px%2C1px+solid+%23999999&amp;source=http%3A%2F%2Fwww.gmodules.com%2Fig%2Fcreator%3Fhl%3Den%26url%3Dhttp%253A%252F%252Fwww.google.com%252Fcse%252Fapi%252F012923036574958016342%252Fcse%252Fli5hnoda-l4%252Fgadget' />
+            </form>
+          </div>
+          <p class='title'>
+            <a href='/'>
+              Webbynode Guides
+            </a>
+          </p>
+        </div>
+      </div>
+      <div class='article rapidapp' id='content'>
+        <div class='inner'>
+          <div class='column span-15 first'>
+            <h1>Rapp Trial</h1>&#x000A;<h2>Deploy your app to Rapp Trial server</h2>&#x000A;<p>Do you have an application and you are thinking of deploying it to Webbynode? Now you can try deploying it before you sign up, with Rapp Trial.</p>&#x000A;<div class="callout"><strong>Warning:</strong> All Trial apps run on a shared server and we have an automated deletion job that runs daily, so your app will be up for 24 hours tops.</div>&#x000A;<h4>Install Webbynode gem</h4>&#x000A;<p>The first step is to install the Webbynode gem</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ sudo gem install webbynode&#x000A;&#x000A;-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-&#x000A;      Webbynode Rapid Deployment Gem&#x000A;-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-&#x000A;&#x000A;Thank you for installing Webbynode gem. You're now&#x000A;able to deploy and manage your applications from&#x000A;the comfort of your command line.&#x000A;&#x000A;Please read our guide for a quickstart:&#x000A;http://guides.webbynode.com/articles/rapidapps/&#x000A;&#x000A;Successfully installed webbynode-1.0.3&#x000A;1 gem installed&#x000A;</pre>&#x000A;</div>&#x000A;<div class="callout"><strong>Important:</strong> Make sure you have the version 1.0.3 installed. You can double check running <code>wn version</code>.</div>&#x000A;<h4>Create a Rapp trial user</h4>&#x000A;<p>First step is to create a user to be used during the deployment. Use the <code>wn user add</code> command as below:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ wn user add     &#x000A;Rapp Trial - http://rapp.webbynode.com&#x000A;&#x000A;Rapp Trial is a good way to try Webbynode's Rapp Engine without being a subscriber.&#x000A;You can deploy your application and it will be online for up to 24 hours. We delete&#x000A;all applications at 2AM EST, but your user will remain valid.&#x000A;&#x000A;Please enter your email below.&#x000A;&#x000A;Email: felipe@webbynode.com&#x000A;&#x000A;Enter an username and password to start using Rapp Trial.&#x000A;&#x000A;         Username: felipe&#x000A;Choose a password: ********&#x000A;   Enter it again: ********&#x000A;&#x000A;User felipe created&#x000A;</pre>&#x000A;</div>&#x000A;<p>The user name is now saved in a settings file called <code>~/.webbynode</code> and will be used for trial deployments. If you already have a Webbynode account, don&#8217;t worry: this user is kept completely separated from your regular user.</p>&#x000A;<h4>Initialize your application</h4>&#x000A;<p>To initialize your application, refer to the <a href="bootstrapping.html">bootstrapping</a> section, however always run the <code>wn init</code> command with the <code>--trial</code> option:</p>&#x000A;<p>You will be prompted for your trial user password only once. All subsequent pushes will be handled without the need of typing a password.</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ wn init --trial&#x000A;Webbynode Rapp - http://rapp.webbynode.com&#x000A;[Webbynode] Initializing application php with dns php&#x000A;&#x000A;Supported engines:&#x000A;&#x000A;  1. Django&#x000A;  2. WSGI&#x000A;  3. PHP&#x000A;  4. Rack&#x000A;  5. Rails 2&#x000A;  6. Rails 3&#x000A;  7. NodeJS&#x000A;&#x000A;Select the engine your app uses:&#x000A;3&#x000A;&#x000A;Initializing with PHP engine...&#x000A;&#x000A;Initializing directory structure...&#x000A;&#x000A;Initializing git and applying initial commit...&#x000A;Adding webbynode as git remote...&#x000A;Enter your deployment password for felipe@trial.webbyapp.com: &#x000A;&#x000A;[Webbynode] Application php ready for Rapid Deployment&#x000A;</pre>&#x000A;</div>&#x000A;<p>And now your app is deployed. To open it just run <code>wn open</code>, as usual.</p>&#x000A;
+            <div class='master-separator'>
+              <div class='separator-wrapper'>
+                <div class='separator-label'>Comments</div>
+              </div>
+            </div>
+            <div id='disqus_thread'></div>
+            <script src='http://disqus.com/forums/webbynodeguides/embed.js' type='text/javascript'></script>
+            <noscript>
+              <a href='http://disqus.com/forums/webbynodeguides/?url=ref'>
+                View the discussion thread.
+              </a>
+            </noscript>
+            <a class='dsq-brlink' href='http://disqus.com'>
+              blog comments powered by
+              <span class='logo-disqus'>
+                Disqus
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class='column span-6 prepend-1 last' id='sidebar'>
+          <div class='box'>
+            <p class='title'>
+              <b>
+                Basic Topics
+              </b>
+            </p>
+            <ul>
+              <li><a href="index.html">Index</a></li>
+              <li><a href="preparation.html">Preparation</a></li>
+              <li><a href="bootstrapping.html">Bootstrapping</a></li>
+              <li><a href="publishing.html">Publishing</a></li>
+              <li><a href="updating.html">Updating</a></li>
+              <li><a href="workflow.html">Workflow</a></li>
+              <li><a href="troubleshooting.html">Troubleshooting</a></li>
+              <li><a href="deleting.html">Deleting</a></li>
+            </ul>
+          </div>
+          <div class='box'>
+            <p class='title'>
+              <b>
+                Advanced Topics
+              </b>
+            </p>
+            <ul>
+              <li><a href="engines.html">Supported Engines</a></li>
+              <li><a href="addons.html">Add-ons</a></li>
+              <li><a href="backup.html">S3 Backup</a></li>
+              <li><a href="dns.html">Handling DNS</a></li>
+              <li><a href="webbyops.html">Start/Stop/Reboot</a></li>
+              <li><a href="hooks.html">Deployment Hooks</a></li>
+              <!-- %li <a href="remote.html">Remote Commands</a> -->
+              <!-- %li <a href="aliases.html">Aliases</a> -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id='footer'>
+      <div class='inner'>
+        Copyright &copy; 2010-2020 Webbynode
+      </div>
+    </div>
+    <script src='https://static.getclicky.com/55061.js' type='text/javascript'></script>
+    <script type='text/javascript'>
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type='text/javascript'>
+      try {
+      var pageTracker = _gat._getTracker("UA-12533000-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
+  </body>
+</html>
