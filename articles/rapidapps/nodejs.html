@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang='en-us' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <meta content='text/html; charset=utf-8' http-equiv='content-type' />
+    <meta content='Z_wF3a4y6_g8W7oFyGyuXoS8q4dTgshb0bDplfKsevc' name='google-site-verification' />
+    <title>
+      Rapid Application Deployment Engine
+    </title>
+    <meta content='&lt;%= @page.author %&gt;' name='author' />
+    <link href='/css/blueprint/screen.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <!--[if IE]>
+      <link href='/css/blueprint/print.css' media='print' rel='stylesheet' type='text/css' />
+    <![endif]-->
+    <link href='/css/blueprint/ie.css' media='screen, projection' type='text/css' />
+    <link href='/css/coderay.css?id=1' rel='stylesheet' type='text/css' />
+    <link href='/css/site.css?id=1' media='screen, projection' rel='stylesheet' type='text/css' />
+  </head>
+  <body>
+    <div id='main'>
+      <div id='header'>
+        <div class='inner'>
+          <div class='right'>
+            <form action='http://www.google.com/cse' id='cse-search-box'>
+              Search:
+              <br />
+              <input name='cx' type='hidden' value='012923036574958016342:li5hnoda-l4' />
+              <input name='ie' type='hidden' value='UTF-8' />
+              <input name='q' size='28' />
+              <input name='sa' type='submit' value='Go' />
+              <input name='siteurl' type='hidden' value='www.gmodules.com/ig/ifr?url=http://www.google.com/cse/api/012923036574958016342/cse/li5hnoda-l4/gadget&amp;synd=open&amp;w=294&amp;h=41&amp;title=Webbynode+Guides&amp;border=%23ffffff%7C3px%2C1px+solid+%23999999&amp;source=http%3A%2F%2Fwww.gmodules.com%2Fig%2Fcreator%3Fhl%3Den%26url%3Dhttp%253A%252F%252Fwww.google.com%252Fcse%252Fapi%252F012923036574958016342%252Fcse%252Fli5hnoda-l4%252Fgadget' />
+            </form>
+          </div>
+          <p class='title'>
+            <a href='/'>
+              Webbynode Guides
+            </a>
+          </p>
+        </div>
+      </div>
+      <div class='article rapidapp' id='content'>
+        <div class='inner'>
+          <div class='column span-15 first'>
+            <h1>Rapid Application Deployment Engine</h1>&#x000A;<h2>Deploying Node.js Applications</h2>&#x000A;<div class="callout"><strong>Important:</strong> Our current Node.js support is experimental. You should not rely on Rapp for deploying a production Node.js application yet.</div>&#x000A;<p>Deploy your Node.js applications using git and git alone, with our without Web Server proxying.</p>&#x000A;<h4>Preparing</h4>&#x000A;<p>When you initialize Rapp on your Node.js application, we&#8217;ll always look for a <code>server.js</code> file. If it&#8217;s missing, deployment won&#8217;t work. With that said, it&#8217;s mandatory that you stick to this best practice.</p>&#x000A;<p>When you run <code>wn init</code> for the first time, Rapp will try to search inside your <code>server.js</code> file for the Node.js listening port. It searches for the <code>/listen\((\d+)\)/</code> regular expression that matches the usual code. For instance, if you have this:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>http.createServer(function (request, response) {&#x000A;  response.writeHead(200, {&quot;Content-Type&quot;: &quot;text/html&quot;});&#x000A;  response.write(&quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;Node, node, node&lt;/title&gt;&#x000A;    &lt;/head&gt;\n&quot;);&#x000A;  response.write(&quot;&lt;body&gt;\n&quot;);&#x000A;  response.write(&quot;&lt;a href='http://www.youtube.com/watch?v=C526lxeHo-M'&gt;&#x000A;    Node, Node, Node!&lt;/a&gt;\n&quot;);&#x000A;  response.write(&quot;&lt;/body&gt;\n&quot;);&#x000A;  response.write(&quot;&lt;/html&gt;\n&quot;);&#x000A;  response.end();&#x000A;}).listen(1234);&#x000A;</pre>&#x000A;</div>&#x000A;<p>When you initialize, it will default to port 1234, as can be seen below:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ wn init&#x000A;Webbynode Rapp - http://rapp.webbynode.com&#x000A;&#x000A;Current Webbies in your account:&#x000A;&#x000A;  1. hasmany.info (208.88.124.89)&#x000A;  2. sandbox (208.88.125.207)&#x000A;  3. wbno.de (208.88.125.65)&#x000A;  4. wcdcompany (208.88.124.171)&#x000A;&#x000A;Which Webby do you want to deploy to:&#x000A;4&#x000A;&#x000A;Set deployment Webby to wcdcompany.&#x000A;[Webbynode] Initializing application nodeapp with dns nodeapp&#x000A;&#x000A;Configure NodeJS Application&#x000A;&#x000A;  Proxy requests (Y/n) [Y]? &#x000A;     Listening port [1234]:&#x000A;</pre>&#x000A;</div>&#x000A;<p>In case we don&#8217;t have a match, or a wrong match, you can always override the value yourself.</p>&#x000A;<p>The other question we ask when initializing is whether you want to proxy your Node.js app or not. If you do, we&#8217;ll make sure that the Web Server maps your requests from port 80 and a given domain (for instance, <code>nodeapp.webbyapp.com</code>) to your app port. This way you can deploy multiple Node.js applications in the same server and make it work parallel to Rails, Rack, and other apps you want.</p>&#x000A;<h4>Publishing</h4>&#x000A;<p>To publish your app, just run the usual <code>wn push</code> command:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ wn push&#x000A;[Webbynode] Pushing napp&#x000A;Counting objects: 18, done.&#x000A;Delta compression using up to 2 threads.&#x000A;Compressing objects: 100% (14/14), done.&#x000A;Writing objects: 100% (18/18), 1.71 KiB, done.&#x000A;Total 18 (delta 4), reused 0 (delta 0)&#x000A;remote: Checked out master branch&#x000A;remote: &#x000A;remote: ----------------------------&#x000A;remote:   Webbynode git deployment &#x000A;remote: ----------------------------&#x000A;remote: &#x000A;remote: Nginx+Passenger webserver detected...&#x000A;remote: Setting up DNS...&#x000A;remote: &#x000A;remote: Deploying application napp as napp.webbyapp.com...&#x000A;remote: &#x000A;remote: Configuring addons...&#x000A;remote: &#x000A;remote: Configuring node.js application...&#x000A;remote:   =&gt; Configuring nginx vHost...&#x000A;remote:   =&gt; Configuring database...&#x000A;remote:   =&gt; Configuring monit...&#x000A;remote:   =&gt; Starting app...&#x000A;remote: &#x000A;remote: napp deployed successfully.&#x000A;remote: &#x000A;remote: Created http://napp.webbyapp.com/&#x000A;remote: &#x000A;To ssh://git@208.88.124.171:22/var/rapp/napp&#x000A; * [new branch]      master -&gt; master&#x000A;&#x000A;[Webbynode] Finished pushing napp&#x000A;</pre>&#x000A;</div>&#x000A;<h4>Lifecycle</h4>&#x000A;<p>During deployment, we installed and configured a monit service for your application. So, if for any reason your application halts, it will be automatically restarted. You can also stop or start your application from command line, using:</p>&#x000A;<div class="CodeRay">&#x000A;<pre># wn remote sudo monit stop napp.webbyapp.com&#x000A;Performing the requested remote command..&#x000A;&#x000A;# wn remote sudo monit start napp.webbyapp.com&#x000A;Performing the requested remote command..&#x000A;</pre>&#x000A;</div>&#x000A;<h4>Summary</h4>&#x000A;<p>As you can see, we do all the heavy lifting for you. Here&#8217;s a summary of what we did for you when deploying:</p>&#x000A;<ol>&#x000A;	<li>Transfered all application files to the remote server;</li>&#x000A;	<li>Created a new dns in the format <code>appname.webbyapp.com</code>;</li>&#x000A;	<li>If you answered <code>Y</code> to proxy, we added a new vHost to the WebServer (nginx or Apache), pointing to your Node.js app;</li>&#x000A;	<li>Created a new database and database user for your app (MySQL or PostgreSQL);</li>&#x000A;	<li>Created a monit service for monitoring, stopping and starting your Node.js app;</li>&#x000A;</ol>&#x000A;
+            <div class='master-separator'>
+              <div class='separator-wrapper'>
+                <div class='separator-label'>Comments</div>
+              </div>
+            </div>
+            <div id='disqus_thread'></div>
+            <script src='http://disqus.com/forums/webbynodeguides/embed.js' type='text/javascript'></script>
+            <noscript>
+              <a href='http://disqus.com/forums/webbynodeguides/?url=ref'>
+                View the discussion thread.
+              </a>
+            </noscript>
+            <a class='dsq-brlink' href='http://disqus.com'>
+              blog comments powered by
+              <span class='logo-disqus'>
+                Disqus
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class='column span-6 prepend-1 last' id='sidebar'>
+          <div class='box'>
+            <p class='title'>
+              <b>
+                Basic Topics
+              </b>
+            </p>
+            <ul>
+              <li><a href="index.html">Index</a></li>
+              <li><a href="preparation.html">Preparation</a></li>
+              <li><a href="bootstrapping.html">Bootstrapping</a></li>
+              <li><a href="publishing.html">Publishing</a></li>
+              <li><a href="updating.html">Updating</a></li>
+              <li><a href="workflow.html">Workflow</a></li>
+              <li><a href="troubleshooting.html">Troubleshooting</a></li>
+              <li><a href="deleting.html">Deleting</a></li>
+            </ul>
+          </div>
+          <div class='box'>
+            <p class='title'>
+              <b>
+                Advanced Topics
+              </b>
+            </p>
+            <ul>
+              <li><a href="engines.html">Supported Engines</a></li>
+              <li><a href="addons.html">Add-ons</a></li>
+              <li><a href="backup.html">S3 Backup</a></li>
+              <li><a href="dns.html">Handling DNS</a></li>
+              <li><a href="webbyops.html">Start/Stop/Reboot</a></li>
+              <li><a href="hooks.html">Deployment Hooks</a></li>
+              <!-- %li <a href="remote.html">Remote Commands</a> -->
+              <!-- %li <a href="aliases.html">Aliases</a> -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id='footer'>
+      <div class='inner'>
+        Copyright &copy; 2010-2020 Webbynode
+      </div>
+    </div>
+    <script src='https://static.getclicky.com/55061.js' type='text/javascript'></script>
+    <script type='text/javascript'>
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type='text/javascript'>
+      try {
+      var pageTracker = _gat._getTracker("UA-12533000-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
+  </body>
+</html>
