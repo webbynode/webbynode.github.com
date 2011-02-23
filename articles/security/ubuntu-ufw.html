@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang='en-us' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <meta content='text/html; charset=utf-8' http-equiv='content-type' />
+    <title>
+      Installing and Configuring ufw (Uncomplicated Firewall)
+    </title>
+    <meta content='&lt;%= @page.author %&gt;' name='author' />
+    <link href='/css/blueprint/screen.css' media='screen, projection' rel='stylesheet' type='text/css' />
+    <!--[if IE]>
+      <link href='/css/blueprint/print.css' media='print' rel='stylesheet' type='text/css' />
+    <![endif]-->
+    <link href='/css/blueprint/ie.css' media='screen, projection' type='text/css' />
+    <link href='/css/coderay.css?id=1' rel='stylesheet' type='text/css' />
+    <link href='/css/site.css?id=1' media='screen, projection' rel='stylesheet' type='text/css' />
+  </head>
+  <body>
+    <div id='main'>
+      <div id='header'>
+        <div class='inner'>
+          <div class='right'>
+            <form action='http://www.google.com/cse' id='cse-search-box'>
+              Search:
+              <br />
+              <input name='cx' type='hidden' value='012923036574958016342:li5hnoda-l4' />
+              <input name='ie' type='hidden' value='UTF-8' />
+              <input name='q' size='28' />
+              <input name='sa' type='submit' value='Go' />
+              <input name='siteurl' type='hidden' value='www.gmodules.com/ig/ifr?url=http://www.google.com/cse/api/012923036574958016342/cse/li5hnoda-l4/gadget&amp;synd=open&amp;w=294&amp;h=41&amp;title=Webbynode+Guides&amp;border=%23ffffff%7C3px%2C1px+solid+%23999999&amp;source=http%3A%2F%2Fwww.gmodules.com%2Fig%2Fcreator%3Fhl%3Den%26url%3Dhttp%253A%252F%252Fwww.google.com%252Fcse%252Fapi%252F012923036574958016342%252Fcse%252Fli5hnoda-l4%252Fgadget' />
+            </form>
+          </div>
+          <p class='title'>
+            <a href='/'>
+              Webbynode Guides
+            </a>
+          </p>
+        </div>
+      </div>
+      <div class='article' id='content'>
+        <div class='inner'>
+          <h1>Installing and Configuring ufw (Uncomplicated Firewall)</h1>&#x000A;<p><img src="images/lock.jpg" align="right"></p>&#x000A;<p>One of the first things you should do after bootstrapping a new Webby is tighten its security. Many hacking attempts are successful because users choose weak passwords and leave common ports open and listening.</p>&#x000A;<p>In this guide we&#8217;ll walk you through how to install and configure an easy-to-use firewall package called ufw (Uncomplicated Firewall) that is available through <code>apt-get</code>.</p>&#x000A;<h2>Requirements</h2>&#x000A;<p>This guide was written using Ubuntu 10.04 but should work without changes for Ubuntu 8.04 or later.</p>&#x000A;<h2>Installation</h2>&#x000A;<p>To install <code>ufw</code> you just have to use apt-get, it&#8217;s that simple:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ apt-get update&#x000A;$ apt-get install ufw&#x000A;</pre>&#x000A;</div>&#x000A;<p>Note: If you&#8217;re not logged in as the <code>root</code> user you&#8217;ll need to use <code>sudo apt-get install ufw</code>.</p>&#x000A;<h2>Configuration</h2>&#x000A;<p>Configuring <code>ufw</code> is almost as simple as installing it. It&#8217;s a very intuitive tool.</p>&#x000A;<p>Ufw comes disabled by default, so the first thing you want to do is enable it and answer <code>y</code> to the prompt:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ ufw enable&#x000A;Command may disrupt existing ssh connections. Proceed with operation (y|n)? y&#x000A;Firewall is active and enabled on system startup&#x000A;</pre>&#x000A;</div>&#x000A;<p>Alright, now it&#8217;s enabled and will be executed upon server startup as well. This way, even if you reboot your Webby, <code>ufw</code> will continue to run.</p>&#x000A;<h3>Denying connections by default</h3>&#x000A;<p>When installed, <code>ufw</code> acts very unobtrusively: it won&#8217;t close access to any ports. However, in order to really secure our system, we should take the inverse approach. This approach is deny any connections, except the ones we explicitly find we need.</p>&#x000A;<p>Before changing the default <code>ufw</code> operation mode, let&#8217;s make sure we allow connections to the <code>ssh</code> port we&#8217;re connected to:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ ufw allow 22&#x000A;Rule added&#x000A;</pre>&#x000A;</div>&#x000A;<p>You can now check that this rule was properly added:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ ufw status  &#x000A;Status: active&#x000A;&#x000A;To                         Action  From&#x000A;--                         ------  ----&#x000A;22                         ALLOW   Anywhere&#x000A;</pre>&#x000A;</div>&#x000A;<p>Now that <code>ssh</code> is good to go, let&#8217;s shut everything else down:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ ufw default deny&#x000A;Default policy changed to 'deny'&#x000A;(be sure to update your rules accordingly)&#x000A;</pre>&#x000A;</div>&#x000A;<p>Now you have to start allowing all the ports you plan on using on this Webby. For instance, if you are serving html pages from Apache or running a Rails application, you should open port 80:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ ufw allow 80&#x000A;Rule added&#x000A;</pre>&#x000A;</div>&#x000A;<p>In case you&#8217;re in doubt about which port a service uses by default, you can check <a href="http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers">this link in Wikipedia</a>.</p>&#x000A;<h3>Fine grained security</h3>&#x000A;<p>If you want to be even more secure, here&#8217;s another tip to improve security.</p>&#x000A;<p>Let&#8217;s say you&#8217;re running a MySQL Database Server on your Webby and your app has grown and you want to have another  Webby to server Web requests. In order to allow the other Webby to connect to the MySQL Server that is running locally, you could simply allow 3306 (MySQL default listening port), or you could only allow the other Webby to connect.</p>&#x000A;<p>This is very simple as well. Let&#8217;s say <code>webby_mysql</code> is (obviously) where MySQL is and the new Webby goes by the name of <code>webby_appserver</code> and has an internal IP of <code>172.16.0.94</code>. All you have to do is find <code>webby_appserver</code>&#8217;s IP (preferably the internal one) and add it to the allowed list of IPs for port 3306.</p>&#x000A;<p>Here&#8217;s how we achieve it:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ ufw allow from 172.16.0.94 to any port 3306&#x000A;Rule added&#x000A;</pre>&#x000A;</div>&#x000A;<p>And you can double check it:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>$ ufw status&#x000A;Status: active&#x000A;&#x000A;To                         Action  From&#x000A;--                         ------  ----&#x000A;22                         ALLOW   Anywhere&#x000A;3306                       ALLOW   172.16.0.94&#x000A;</pre>&#x000A;</div>&#x000A;<h3>See also</h3>&#x000A;<ul>&#x000A;	<li><a href="ubuntu-google-authenticator.html">Two factor user authentication with Google Authenticator</a> for improved security;</li>&#x000A;</ul>&#x000A;<h3>Further reference</h3>&#x000A;<p>You can do a lot more with <code>ufw</code>: things like allowing an IP range, allowing only tcp or only udp connections, etc.</p>&#x000A;<p>For further reference, you can visit:</p>&#x000A;<ul>&#x000A;	<li><a href="https://help.ubuntu.com/8.10/serverguide/C/firewall.html">Ubuntu Firewall</a> article on Ubuntu Official Documentation;</li>&#x000A;	<li><a href="https://wiki.ubuntu.com/UncomplicatedFirewall?action=show&redirect=UbuntuFirewall">Uncomplicated Firewall</a> on Ubuntu Wiki;</li>&#x000A;</ul>&#x000A;
+          <div class='master-separator'>
+            <div class='separator-wrapper'>
+              <div class='separator-label'>Comments</div>
+            </div>
+          </div>
+          <div id='disqus_thread'></div>
+          <script src='http://disqus.com/forums/webbynodeguides/embed.js' type='text/javascript'></script>
+          <noscript>
+            <a href='http://disqus.com/forums/webbynodeguides/?url=ref'>
+              View the discussion thread.
+            </a>
+          </noscript>
+          <a class='dsq-brlink' href='http://disqus.com'>
+            blog comments powered by
+            <span class='logo-disqus'>
+              Disqus
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div id='force'></div>
+    <div id='footer'>
+      <div class='inner'>
+        Copyright &copy; 2010-2020 Webbynode
+      </div>
+    </div>
+    <script src='https://static.getclicky.com/55061.js' type='text/javascript'></script>
+    <script type='text/javascript'>
+      <![CDATA[
+          (function() {
+          var links = document.getElementsByTagName('a');
+          var query = '?';
+          for(var i = 0; i < links.length; i++) {
+          if(links[i].href.indexOf('#disqus_thread') >= 0) {
+          query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&amp;';
+          }
+          }
+          document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/webbynodeguides/get_num_replies.js' + query + '"></' + 'script>');
+          })();
+      ]]>
+    </script>
+    <script type='text/javascript'>
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type='text/javascript'>
+      try {
+      var pageTracker = _gat._getTracker("UA-12533000-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
+  </body>
+</html>

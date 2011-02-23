@@ -1,6 +1,6 @@
 body {
   line-height: 1.5em;
-  font-size: 17px;
+  font-size: 16px;
   font-family: helvetica, arial, freesans, clean, sans-serif; }
 
 html, body {
@@ -97,7 +97,7 @@ code {
 .CodeRay .no {
   display: none; }
 .CodeRay pre {
-  font-size: 0.9em;
+  font-size: 0.8em;
   line-height: 1.4em; }
 
 #main {
@@ -172,7 +172,7 @@ code {
   margin-top: 20px; }
 
 .rapidapp .CodeRay pre {
-  font-size: 0.7em; }
+  font-size: 0.8em; }
 .rapidapp p.title {
   margin-bottom: 0; }
 
