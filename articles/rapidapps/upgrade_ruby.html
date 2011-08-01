@@ -4,7 +4,7 @@
     <meta content='text/html; charset=utf-8' http-equiv='content-type' />
     <meta content='Z_wF3a4y6_g8W7oFyGyuXoS8q4dTgshb0bDplfKsevc' name='google-site-verification' />
     <title>
-      Rapid Application Deployment Engine
+      Upgrading Ruby 1.9.2 to p290
     </title>
     <meta content='&lt;%= @page.author %&gt;' name='author' />
     <link href='/css/blueprint/screen.css' media='screen, projection' rel='stylesheet' type='text/css' />
@@ -40,7 +40,7 @@
       <div class='article rapidapp' id='content'>
         <div class='inner'>
           <div class='column span-15 first'>
-            <p>&#x000A;  <center><img src="images/rapp.png"></center>&#x000A;</p>&#x000A;<p>&#x000A;  Our <em>Rapid Application Deployment</em> stack, now being nicknamed as only&#x000A;  <b>rapp</b>,&#x000A;  allows you to deploy a <a href="engines.html">wide range of application languages and stacks</a>, as easy as pushing a git change. You just have to install Webbynode's gem and run a couple of commands, based on the same git workflow you're used to.&#x000A;</p>&#x000A;<p>&#x000A;  Once you submit your app for deployment, all the dirty work will be done behind the scenes for you.&#x000A;</p>&#x000A;<h2>Requirements</h2>&#x000A;<ul>&#x000A;  <li>&#x000A;    Webbynode account&#x000A;    <em>(don't tell me!)</em>&#x000A;  </li>&#x000A;  <li>Linux, Mac OS X or Windows (tested on XP+)</li>&#x000A;  <li>Ruby, RubyGems, Rails. Yes, the full gang!</li>&#x000A;  <li>git</li>&#x000A;</ul>&#x000A;Start out with the&#x000A;<a href='preparation.html'>Preparation</a>&#x000A;section.&#x000A;<br />&#x000A;<br />&#x000A;<p>&#x000A;  And now, what you're waiting for? Get on the deploy early bandwagon!&#x000A;</p>&#x000A;&#x000A;
+            <h1>Upgrading Ruby 1.9.2 to p290</h1>&#x000A;<div class="callout"><strong>Warning:</strong> Upgrading the Ruby version using this script will require you to reinstall all your Gems. If you&#8217;re using Bundler, a mere <b><code>wn push</code></b> will do it, otherwise you&#8217;ll have to reinstall them manually.</div>&#x000A;<p>To upgrade Ruby 1.9.2 to the latest version, execute the following command in your Webby:</p>&#x000A;<div class="CodeRay">&#x000A;<pre>curl -L wbno.de/rubyupg | bash&#x000A;</pre>&#x000A;</div>&#x000A;
             <div class='master-separator'>
               <div class='separator-wrapper'>
                 <div class='separator-label'>Comments</div>
